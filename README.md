@@ -1,234 +1,81 @@
-# Local Ollama coding benchmark
+# Local Ollama coding benchmark – results
 
-A self-contained benchmark for local Ollama models, designed for a single AMD
-MI50 32 GB (ROCm) card. It focuses on coding tasks and validates the generated
-output by **executing it**, not by asking another model to grade it.
+## Leaderboard
 
-The suite has 15 tasks across code generation, bug fixing, completion,
-refactoring, standalone programs, SQL, regex, and test generation. Every task
-ships with a reference solution and deliberately broken mutants. `verify`
-proves that the hidden checks accept the reference and reject every mutant.
+| Rank | Model | Overall | Resolved | Coding | Non-coding | Correctness | Edge depth | Median tok/s | Peak VRAM |
+|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 1 | `qwen3.8:latest` | 0.989 | 14/15 | 1.000 | 0.967 | 0.991 | 0.987 | 37.2 | 18.2 GB |
+| 2 | `nemotron-3.5-bolt:latest` | 0.981 | 14/15 | 0.972 | 1.000 | 0.987 | 0.973 | 57.5 | 25.4 GB |
+| 3 | `flint:latest` | 0.912 | 12/15 | 0.877 | 0.983 | 0.915 | 0.908 | 29.1 | 17.8 GB |
 
-## Requirements
+**Run:** `full-all-models-gpu` · 2026-11-15 · 380.96 s · Ollama 0.40.14 ·
+temperature=0, think=false, num_ctx=8192, seed=42 · GPU: AMD MI50 32 GB (ROCm)
 
-- Python 3.11+ (uses only the standard library)
-- Ollama running somewhere reachable (default `http://localhost:11434`)
-- Bubblewrap (`bwrap`) for strong sandboxing; falls back to plain subprocesses
-- `rocm-smi` for GPU VRAM / utilization / temperature / power sampling (optional)
-- `prlimit` (util-linux, normally already installed) for memory/CPU/process limits
+## Charts
 
-No Python packages need to be installed.
+| Chart | Description |
+|---|---|
+| [Overall score](results/full-all-models-gpu/chart_overall.png) | Overall benchmark score per model |
+| [Category scores](results/full-all-models-gpu/chart_categories.png) | Scores grouped by task category |
+| [Performance](results/full-all-models-gpu/chart_performance.png) | Generation speed, TTFT, peak VRAM, max temp |
+| [Per-task heatmap](results/full-all-models-gpu/chart_tasks.png) | Score per task per model |
 
-## Quick start
+## Category scores
+
+| Model | bugfix | codegen | completion | program | refactor | regex | sql | test-generation |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| `qwen3.8:latest` | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | 0.917 | 1.000 | 1.000 |
+| `nemotron-3.5-bolt:latest` | 1.000 | 1.000 | 0.720 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
+| `flint:latest` | 1.000 | 1.000 | 0.000 | 0.883 | 1.000 | 0.959 | 1.000 | 1.000 |
+
+## Per-task results
+
+`*` = fully resolved (all hidden checks passed).
+
+| Task | Category | Difficulty | `qwen3.8` | `nemotron-3.5-bolt` | `flint` |
+|---|---|---|---:|---:|---:|
+| codegen_slugify | codegen | easy | 1.00* (11/11) | 1.00* (11/11) | 1.00* (11/11) |
+| codegen_merge_intervals | codegen | medium | 1.00* (10/10) | 1.00* (10/10) | 1.00* (10/10) |
+| codegen_lru_cache | codegen | medium | 1.00* (9/9) | 1.00* (9/9) | 1.00* (9/9) |
+| codegen_topological_sort | codegen | hard | 1.00* (10/10) | 1.00* (10/10) | 1.00* (10/10) |
+| bugfix_binary_search | bugfix | easy | 1.00* (11/11) | 1.00* (11/11) | 1.00* (11/11) |
+| bugfix_inventory | bugfix | medium | 1.00* (10/10) | 1.00* (10/10) | 1.00* (10/10) |
+| completion_parse_duration | completion | medium | 1.00* (10/10) | 0.72 (8/10) | 0.00 (0/10) |
+| refactor_summarize | refactor | medium | 1.00* (9/9) | 1.00* (9/9) | 1.00* (9/9) |
+| program_json_flatten | program | medium | 1.00* (10/10) | 1.00* (10/10) | 0.77 (8/10) |
+| program_word_freq | program | medium | 1.00* (10/10) | 1.00* (10/10) | 1.00* (10/10) |
+| sql_top_customers | sql | medium | 1.00* (5/5) | 1.00* (5/5) | 1.00* (5/5) |
+| sql_department_above_average | sql | hard | 1.00* (5/5) | 1.00* (5/5) | 1.00* (5/5) |
+| regex_semver | regex | medium | 0.83 (12/14) | 1.00* (14/14) | 0.92 (13/14) |
+| regex_password | regex | medium | 1.00* (14/14) | 1.00* (14/14) | 1.00* (14/14) |
+| tests_gen_bank_account | test-generation | hard | 1.00* (kill 100%) | 1.00* (kill 100%) | 1.00* (kill 100%) |
+
+## Performance on the local GPU
+
+| Model | Load (s) | Median tok/s | Mean TTFT (s) | Eval tokens | Gen wall (s) | Peak VRAM | Avg GPU use | Max temp | Max power |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `qwen3.8:latest` | 0.00 | 37.17 | 1.62 | 3369 | 117.4 | 18188 MB | 74.3% | 105.0 C | 258.0 W |
+| `nemotron-3.5-bolt:latest` | 18.69 | 57.49 | 1.66 | 2635 | 70.7 | 25395 MB | 64.0% | 104.0 C | 259.0 W |
+| `flint:latest` | 38.78 | 29.10 | 1.55 | 2252 | 101.8 | 17799 MB | 53.3% | 75.0 C | 109.0 W |
+
+## Observations
+
+- **qwen3.8:latest** leads overall (0.989). Only miss: `regex_semver` – the pattern
+  accepted leading-zero versions (`01.2.3`) which the spec forbids.
+- **nemotron-3.5-bolt:latest** is the fastest (57.5 tok/s) with 14/15 resolved.
+  Only miss: `completion_parse_duration` – rejected valid `0s`/`0m` values (8/10).
+- **flint:latest** missed 3 tasks: `completion_parse_duration` (0/10, returned
+  TODO scaffold), `program_json_flatten` (8/10), and `regex_semver` (13/14).
+
+## Regenerating charts
 
 ```bash
-# See downloaded models and benchmark tasks
-python3 bench.py list
-
-# Prove the task suite is valid. No model calls are made.
-python3 bench.py verify
-
-# Fast smoke benchmark: one task per category
-python3 bench.py run --quick
-
-# Full 15-task benchmark on the three local models
-python3 bench.py run --models qwen3.8:latest,flint:latest,nemotron-3.5-bolt:latest
-
-# Re-render a saved run
-python3 bench.py report --input results/<run>/results.json
+python3 chart.py results/<run>/results.json
 ```
 
-Each run writes `results/<run>/results.json`, `report.md`, and raw model output
-under `results/<run>/raw/`.
+Charts are written as PNGs into the same directory as `results.json`.
 
-### Useful options
+## Project docs
 
-```bash
---models a,b,c          # comma-separated model names (default: all completion-capable)
---tasks id1,id2         # select specific task ids
---categories codegen,sql
---quick                 # one representative task per category
---think false|true|low|medium|high
---num-ctx 8192          # context window (raise carefully on 32 GB)
---num-predict N         # global cap on generated tokens (never raises a task cap)
---temperature 0 --seed 42
---gpu-device 0          # MI50 is GPU[0] here
---no-gpu                # disable rocm-smi sampling
---sandbox auto|bwrap|subprocess
---keep-loaded           # do not unload between models
---skip-verify           # skip the pre-run reference/mutant verification
---allow-invalid-suite   # run even if suite verification fails
---no-raw                # do not save raw responses
-```
-
-## What the tasks validate
-
-| Task | Category | Difficulty | Validation |
-|---|---|---|---|
-| `codegen_slugify` | codegen | easy | 11 hidden checks incl. unicode, punctuation, empty input |
-| `codegen_merge_intervals` | codegen | medium | 10 checks incl. touching intervals, nesting, no mutation |
-| `codegen_lru_cache` | codegen | medium | 9 checks incl. recency, capacity 1, invalid capacity |
-| `codegen_topological_sort` | codegen | hard | 10 checks incl. cycles, self-loops, duplicate edges |
-| `bugfix_binary_search` | bugfix | easy | 11 checks; the buggy mutant infinite-loops and times out |
-| `bugfix_inventory` | bugfix | medium | 10 checks incl. insufficient stock and non-positive quantities |
-| `completion_parse_duration` | completion | medium | 10 checks incl. unit ordering, duplicates, invalid forms |
-| `refactor_summarize` | refactor | medium | 9 checks incl. empty input, floats, one-shot generators |
-| `program_json_flatten` | program | medium | 10 stdin/stdout cases incl. empty roots and lexicographic sorting |
-| `program_word_freq` | program | medium | 10 cases incl. ties, case folding, ASCII-only words |
-| `sql_top_customers` | sql | medium | 5 SQLite result-set cases incl. dense-rank ties |
-| `sql_department_above_average` | sql | hard | 5 cases incl. ties, single-employee departments, overall-vs-department average |
-| `regex_semver` | regex | medium | 14 match/no-match cases incl. leading zeros and prerelease/build |
-| `regex_password` | regex | medium | 14 full-match cases incl. length bounds and forbidden characters |
-| `tests_gen_bank_account` | test-generation | hard | generated tests must pass a correct implementation and kill 4 mutants |
-
-Every task also has a reference solution and 3-4 mutants. `verify` executes the
-reference (must score 1.0) and each mutant (must score below 1.0). The suite is
-not accepted for a run unless all 15 tasks pass this check.
-
-## Scoring
-
-- **Correctness** is the fraction of hidden checks that pass.
-- **Edge depth** is the pass rate on checks tagged as edge cases.
-- **Score** is `0.6 * correctness + 0.4 * edge_depth` (plain pass rate if a task
-  has no edge checks).
-- **Test generation** is special: `0.5 * validity + 0.5 * mutant_kill_rate`,
-  scaled down if fewer than the requested minimum number of test functions are
-  generated.
-- A task is **resolved** only when every hidden check passes (and, for test
-  generation, all mutants are killed and the minimum test count is met).
-
-The report also shows overall, coding-only, non-coding, correctness, and edge
-depth averages, plus per-category and per-task results.
-
-## Execution and isolation
-
-Generated code is executed in a fresh working directory under `/var/tmp` inside
-bubblewrap when available:
-
-- read-only host filesystem, with only the task directory writable
-- private `/tmp`
-- no network namespace
-- separate PID/IPC/UTS/cgroup namespaces
-- CPU, address-space, process-count, and file-descriptor limits via `prlimit`
-- per-test subprocesses with timeouts, so one hanging test does not destroy the
-  rest of the result
-
-SQL queries run against an in-memory SQLite database with a read-only authorizer
-and a guard that rejects writes, DDL, multiple statements, and non-SELECT/WITH
-queries.
-
-## GPU performance metrics
-
-While each request runs, `rocm-smi` is polled for the selected GPU:
-
-- peak total VRAM and VRAM delta from the start of the request
-- GPU utilization (max and average)
-- max temperature across edge/junction/memory sensors
-- max and average socket power
-- generation speed (Ollama `eval_count / eval_duration`), time-to-first-token,
-  prompt and eval token counts
-- model load time from a dedicated warmup request (excluded from task metrics)
-
-`peak_vram_mb` is the **total device** VRAM, so it can include other processes on
-the card. Models are run one at a time; the previous model is unloaded before the
-next one is warmed up.
-
-## Example results
-
-Full suite (15 tasks), MI50 32 GB, `think=false`, `num_ctx=8192`,
-temperature 0, seed 42, single run, 380.96 s total:
-
-| Model | Overall | Resolved | Coding | Median tok/s | Peak VRAM |
-|---|---:|---:|---:|---:|---:|
-| `qwen3.8:latest` | 0.989 | 14/15 | 1.000 | 37.2 | 17.8 GB |
-| `nemotron-3.5-bolt:latest` | 0.981 | 14/15 | 0.972 | 57.5 | 24.8 GB |
-| `flint:latest` | 0.912 | 12/15 | 0.877 | 29.1 | 17.4 GB |
-
-Observations from that run:
-
-- All three models fully offloaded their layers to the MI50 during the run:
-  qwen 66/66, flint 50/50, nemotron 89/89 plus a 6/6 draft model.
-- `qwen3.8` passed every coding category. Its only miss was `regex_semver`:
-  the pattern accepted leading-zero versions (`01.2.3`, `1.2.03`), which the
-  specification forbids.
-- `nemotron-3.5-bolt` was fastest. Its only miss was
-  `completion_parse_duration`, where it rejected valid `0s`/`0m` values.
-- `flint` missed three tasks: it returned the original TODO scaffold for the
-  completion task, scored 8/10 on `program_json_flatten`, and scored 13/14 on
-  `regex_semver`.
-- A quick suite (8 tasks, one per category) is available with
-  `python3 bench.py run --quick`.
-
-These are single-run numbers. For a more robust comparison, run several seeds or
-repeat the run and aggregate the JSON results.
-
-## Extending the suite
-
-1. Add a `Task` in `ollama_bench/tasks/` (or a new module).
-2. Provide:
-   - the prompt,
-   - hidden checks,
-   - a `reference` output that must score 1.0,
-   - at least one `mutants` entry that must score below 1.0.
-3. For `kind="tests"`, provide a correct `fixture`, reference tests, and mutant
-   implementations.
-4. Register the task in `ollama_bench/tasks/__init__.py`.
-5. Run `python3 bench.py verify --tasks your_task_id`.
-
-Task kinds:
-
-- `code`: hidden Python test functions run against an extracted `solution.py`
-- `program`: complete `main.py`, validated by stdin/stdout cases
-- `sql`: extracted query executed against SQLite result-set cases
-- `regex`: extracted pattern checked with `re.search`/`re.fullmatch`
-- `tests`: generated test file run against a correct fixture and mutants
-
-## Layout
-
-```
-bench.py                         CLI
-ollama_bench/
-  client.py                      Ollama /api/chat streaming + metrics
-  extract.py                     code / SQL / regex / test extraction
-  metrics.py                     rocm-smi sampler
-  sandbox.py                     bubblewrap/prlimit execution
-  validators.py                  execution-based validators
-  verify.py                      reference/mutant suite verification
-  runner.py                      benchmark orchestration
-  scoring.py                     model aggregation
-  report.py                      Markdown report
-  tasks/                         task definitions + references + mutants
-results/<run>/                   results.json, report.md, raw/
-```
-
-## Caveats
-
-- This is a 15-task coding benchmark, not a general model leaderboard.
-- The hidden checks are deliberately strict; a model can be useful and still
-  lose points on edge cases.
-- GPU results are single-run and temperature-0, but GPU kernels can still be
-  numerically nondeterministic.
-- `num_ctx` affects KV-cache VRAM. Raising it on 32 GB can cause OOM or eviction.
-- Even when every layer is offloaded, Ollama may keep small host-mapped buffers.
-  CPU can also spike briefly while the hidden tests execute between generations;
-  the GPU is idle during those validation windows.
-- Back-to-back model loads can briefly overlap VRAM and make Ollama fall back to
-  partial CPU offload. Unload the previous model and let it exit before loading
-  the next one; the benchmark does this between models.
-- Thinking-level names are model-dependent. `false` and `true` are the safest
-  choices; `low`/`medium` may not be accepted by every model.
-- `rocm-smi` output formats vary. The sampler parses text output and disables
-  itself cleanly if the selected device cannot be read.
-
-## Troubleshooting
-
-- **Cannot reach Ollama**: pass `--host http://host:11434` or set `OLLAMA_HOST`.
-- **Sandbox fails**: try `--sandbox subprocess`. This keeps resource limits but
-  loses filesystem/network isolation, so only use it for trusted output.
-- **OOM / model eviction**: lower `--num-ctx`, unload other GPU processes, or use
-  a smaller model.
-- **A task times out**: generated code can legitimately hang; the timeout is part
-  of the score. Increase `test_timeout` in the task only if the task itself needs
-  more time.
-- **Suite verification fails**: run `python3 bench.py verify` for per-task
-  details. Do not benchmark until references and mutants are behaving correctly.
+- [SUITE.md](SUITE.md) – architecture, task suite, scoring, sandbox, and GPU metrics.
+- [results/full-all-models-gpu/report.md](results/full-all-models-gpu/report.md) – full per-run report.
