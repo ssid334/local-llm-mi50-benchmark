@@ -1,0 +1,400 @@
+{
+  "meta": {
+    "run_id": "vk-full-gpu-test",
+    "started_at": "2026-11-15T13:51:29.139179+00:00",
+    "ollama_version": "0.40.14",
+    "config": {
+      "models": [
+        "qwen3.8:latest"
+      ],
+      "tasks": [
+        "codegen_slugify"
+      ],
+      "categories": [
+        "codegen"
+      ],
+      "think": false,
+      "num_ctx": 8192,
+      "num_predict_cap": null,
+      "temperature": 0.0,
+      "seed": 42,
+      "keep_alive": "45m",
+      "request_timeout_s": 900.0,
+      "gpu_device": 0,
+      "gpu_sampling": true,
+      "sandbox_backend": "bwrap",
+      "unload_between_models": true
+    },
+    "verification": null,
+    "finished_at": "2026-11-15T13:51:44.586596+00:00",
+    "duration_s": 15.45
+  },
+  "models": [
+    {
+      "model": "qwen3.8:latest",
+      "tasks": [
+        {
+          "task_id": "codegen_slugify",
+          "title": "URL slug generation",
+          "category": "codegen",
+          "kind": "code",
+          "difficulty": "easy",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 13.2138,
+            "ttft_s": 3.0719,
+            "eval_count": 149,
+            "prompt_eval_count": 209,
+            "eval_duration_s": 10.1418,
+            "prompt_eval_duration_s": 2.8896,
+            "load_duration_s": 0.0011,
+            "total_duration_s": 13.2133,
+            "done_reason": "stop",
+            "tokens_per_s": 14.692
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 16384.76,
+            "peak_used_vram_mb": 16393.13,
+            "peak_delta_vram_mb": 8.38,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 82.29,
+            "max_temp_c": 65.0,
+            "max_power_w": 164.0,
+            "avg_power_w": 104.71,
+            "samples": 17
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 11,
+            "total": 11,
+            "basic_passed": 4,
+            "basic_total": 4,
+            "edge_passed": 7,
+            "edge_total": 7,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "550 chars"
+              },
+              {
+                "name": "syntax",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "required_symbols",
+                "ok": true,
+                "detail": "all required symbols present"
+              },
+              {
+                "name": "no_placeholders",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "11 tests"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "test_basic_spaces",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0406,
+                "error": null
+              },
+              {
+                "name": "test_basic_punctuation",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.038,
+                "error": null
+              },
+              {
+                "name": "test_basic_case",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0388,
+                "error": null
+              },
+              {
+                "name": "test_basic_digits",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0382,
+                "error": null
+              },
+              {
+                "name": "test_edge_accents",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0382,
+                "error": null
+              },
+              {
+                "name": "test_edge_symbols_only",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0392,
+                "error": null
+              },
+              {
+                "name": "test_edge_empty",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0384,
+                "error": null
+              },
+              {
+                "name": "test_edge_underscores_dots",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0408,
+                "error": null
+              },
+              {
+                "name": "test_edge_non_ascii",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0421,
+                "error": null
+              },
+              {
+                "name": "test_edge_multiple_separators",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0411,
+                "error": null
+              },
+              {
+                "name": "test_edge_leading_trailing",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.041,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "extracted_chars": 550
+          },
+          "error": null,
+          "duration_s": 14.011,
+          "output_chars": 564,
+          "thinking_chars": 0,
+          "requested_max_predict": 768
+        }
+      ],
+      "error": null,
+      "load_s": 0.0006,
+      "warmup_wall_s": 1.385,
+      "summary": {
+        "model": "qwen3.8:latest",
+        "error": null,
+        "task_count": 1,
+        "resolved_count": 1,
+        "resolved_rate": 1.0,
+        "overall_score": 1.0,
+        "coding_score": 1.0,
+        "non_coding_score": 0.0,
+        "test_generation_score": 0.0,
+        "correctness": 1.0,
+        "depth": 1.0,
+        "category_scores": {
+          "codegen": 1.0
+        },
+        "difficulty_scores": {
+          "easy": 1.0
+        },
+        "performance": {
+          "load_s": 0.0006,
+          "warmup_wall_s": 1.385,
+          "tokens_per_s_mean": 14.692,
+          "tokens_per_s_median": 14.692,
+          "ttft_s_mean": 3.072,
+          "eval_tokens_total": 149,
+          "prompt_tokens_total": 209,
+          "generation_wall_s_total": 13.21,
+          "peak_vram_mb": 16393.1,
+          "mean_delta_vram_mb": 8.4,
+          "avg_gpu_use_pct": 82.29,
+          "max_temp_c": 65.0,
+          "max_power_w": 164.0
+        },
+        "tasks": [
+          {
+            "task_id": "codegen_slugify",
+            "title": "URL slug generation",
+            "category": "codegen",
+            "kind": "code",
+            "difficulty": "easy",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 13.2138,
+              "ttft_s": 3.0719,
+              "eval_count": 149,
+              "prompt_eval_count": 209,
+              "eval_duration_s": 10.1418,
+              "prompt_eval_duration_s": 2.8896,
+              "load_duration_s": 0.0011,
+              "total_duration_s": 13.2133,
+              "done_reason": "stop",
+              "tokens_per_s": 14.692
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 16384.76,
+              "peak_used_vram_mb": 16393.13,
+              "peak_delta_vram_mb": 8.38,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 82.29,
+              "max_temp_c": 65.0,
+              "max_power_w": 164.0,
+              "avg_power_w": 104.71,
+              "samples": 17
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 11,
+              "total": 11,
+              "basic_passed": 4,
+              "basic_total": 4,
+              "edge_passed": 7,
+              "edge_total": 7,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "550 chars"
+                },
+                {
+                  "name": "syntax",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "required_symbols",
+                  "ok": true,
+                  "detail": "all required symbols present"
+                },
+                {
+                  "name": "no_placeholders",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "11 tests"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "test_basic_spaces",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0406,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_punctuation",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.038,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_case",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0388,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_digits",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0382,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_accents",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0382,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_symbols_only",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0392,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_empty",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0384,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_underscores_dots",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0408,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_non_ascii",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0421,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_multiple_separators",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0411,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_leading_trailing",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.041,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "extracted_chars": 550
+            },
+            "error": null,
+            "duration_s": 14.011,
+            "output_chars": 564,
+            "thinking_chars": 0,
+            "requested_max_predict": 768
+          }
+        ]
+      }
+    }
+  ]
+}

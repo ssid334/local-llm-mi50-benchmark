@@ -1,0 +1,5591 @@
+{
+  "meta": {
+    "run_id": "qwen-full-smoke",
+    "started_at": "2026-11-15T13:29:15.721970+00:00",
+    "ollama_version": "0.40.14",
+    "config": {
+      "models": [
+        "qwen3.8:latest"
+      ],
+      "tasks": [
+        "codegen_slugify",
+        "codegen_merge_intervals",
+        "codegen_lru_cache",
+        "codegen_topological_sort",
+        "bugfix_binary_search",
+        "bugfix_inventory",
+        "completion_parse_duration",
+        "refactor_summarize",
+        "program_json_flatten",
+        "program_word_freq",
+        "sql_top_customers",
+        "sql_department_above_average",
+        "regex_semver",
+        "regex_password",
+        "tests_gen_bank_account"
+      ],
+      "categories": [
+        "bugfix",
+        "codegen",
+        "completion",
+        "program",
+        "refactor",
+        "regex",
+        "sql",
+        "test-generation"
+      ],
+      "think": false,
+      "num_ctx": 8192,
+      "num_predict_cap": null,
+      "temperature": 0.0,
+      "seed": 42,
+      "keep_alive": "45m",
+      "request_timeout_s": 900.0,
+      "gpu_device": 0,
+      "gpu_sampling": true,
+      "sandbox_backend": "bwrap",
+      "unload_between_models": true
+    },
+    "verification": {
+      "ok": true,
+      "tasks": [
+        {
+          "ok": true,
+          "task_id": "codegen_slugify",
+          "title": "URL slug generation",
+          "kind": "code",
+          "category": "codegen",
+          "difficulty": "easy",
+          "reference_ok": true,
+          "reference_score": 1.0,
+          "reference_resolved": true,
+          "reference_passed": 11,
+          "reference_total": 11,
+          "reference_errors": [],
+          "mutants_ok": true,
+          "mutants": [
+            {
+              "index": 0,
+              "rejected": true,
+              "score": 0.8883,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_edge_accents: AssertionError: "
+              ]
+            },
+            {
+              "index": 1,
+              "rejected": true,
+              "score": 0.4987,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_basic_punctuation: AssertionError: ",
+                "test_edge_accents: AssertionError: ",
+                "test_edge_symbols_only: AssertionError: "
+              ]
+            },
+            {
+              "index": 2,
+              "rejected": true,
+              "score": 0.4468,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_basic_spaces: AssertionError: ",
+                "test_basic_punctuation: AssertionError: ",
+                "test_basic_case: AssertionError: "
+              ]
+            }
+          ],
+          "duration_s": 1.828
+        },
+        {
+          "ok": true,
+          "task_id": "codegen_merge_intervals",
+          "title": "Merge overlapping intervals",
+          "kind": "code",
+          "category": "codegen",
+          "difficulty": "medium",
+          "reference_ok": true,
+          "reference_score": 1.0,
+          "reference_resolved": true,
+          "reference_passed": 10,
+          "reference_total": 10,
+          "reference_errors": [],
+          "mutants_ok": true,
+          "mutants": [
+            {
+              "index": 0,
+              "rejected": true,
+              "score": 0.94,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_basic_touching: AssertionError: "
+              ]
+            },
+            {
+              "index": 1,
+              "rejected": true,
+              "score": 0.94,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_basic_unsorted: AssertionError: "
+              ]
+            },
+            {
+              "index": 2,
+              "rejected": true,
+              "score": 0.8733,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_edge_no_mutation: AssertionError: "
+              ]
+            }
+          ],
+          "duration_s": 1.632
+        },
+        {
+          "ok": true,
+          "task_id": "codegen_lru_cache",
+          "title": "LRU cache",
+          "kind": "code",
+          "category": "codegen",
+          "difficulty": "medium",
+          "reference_ok": true,
+          "reference_score": 1.0,
+          "reference_resolved": true,
+          "reference_passed": 9,
+          "reference_total": 9,
+          "reference_errors": [],
+          "mutants_ok": true,
+          "mutants": [
+            {
+              "index": 0,
+              "rejected": true,
+              "score": 0.64,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_basic_eviction: AssertionError: ",
+                "test_edge_update_resets_recency: AssertionError: ",
+                "test_edge_get_updates_recency: AssertionError: "
+              ]
+            },
+            {
+              "index": 1,
+              "rejected": true,
+              "score": 0.3467,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_basic_eviction: AssertionError: ",
+                "test_edge_capacity_one: AssertionError: ",
+                "test_edge_update_resets_recency: AssertionError: "
+              ]
+            },
+            {
+              "index": 2,
+              "rejected": true,
+              "score": 0.8533,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_edge_invalid_capacity: AssertionError: ValueError not raised"
+              ]
+            }
+          ],
+          "duration_s": 1.475
+        },
+        {
+          "ok": true,
+          "task_id": "codegen_topological_sort",
+          "title": "Topological sort with cycle detection",
+          "kind": "code",
+          "category": "codegen",
+          "difficulty": "hard",
+          "reference_ok": true,
+          "reference_score": 1.0,
+          "reference_resolved": true,
+          "reference_passed": 10,
+          "reference_total": 10,
+          "reference_errors": [],
+          "mutants_ok": true,
+          "mutants": [
+            {
+              "index": 0,
+              "rejected": true,
+              "score": 0.58,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_edge_cycle_raises: AssertionError: ValueError not raised",
+                "test_edge_self_loop_raises: AssertionError: ValueError not raised",
+                "test_edge_out_of_range: IndexError: list index out of range"
+              ]
+            },
+            {
+              "index": 1,
+              "rejected": true,
+              "score": 0.54,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_basic_chain: AssertionError: ",
+                "test_basic_diamond: AssertionError: ",
+                "test_basic_disconnected: AssertionError: "
+              ]
+            },
+            {
+              "index": 2,
+              "rejected": true,
+              "score": 0.72,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_edge_self_loop_raises: AssertionError: ValueError not raised",
+                "test_edge_out_of_range: IndexError: list index out of range"
+              ]
+            }
+          ],
+          "duration_s": 1.624
+        },
+        {
+          "ok": true,
+          "task_id": "bugfix_binary_search",
+          "title": "Fix an infinite-loop binary search",
+          "kind": "code",
+          "category": "bugfix",
+          "difficulty": "easy",
+          "reference_ok": true,
+          "reference_score": 1.0,
+          "reference_resolved": true,
+          "reference_passed": 11,
+          "reference_total": 11,
+          "reference_errors": [],
+          "mutants_ok": true,
+          "mutants": [
+            {
+              "index": 0,
+              "rejected": true,
+              "score": 0.8242,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_basic_absent: timeout after 3s",
+                "test_edge_large_list: timeout after 3s"
+              ]
+            },
+            {
+              "index": 1,
+              "rejected": true,
+              "score": 0.5273,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_basic_found_middle: AssertionError: ",
+                "test_basic_found_last: AssertionError: ",
+                "test_edge_duplicates: AssertionError: "
+              ]
+            },
+            {
+              "index": 2,
+              "rejected": true,
+              "score": 0.4727,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_basic_found_middle: AssertionError: ",
+                "test_basic_absent: AssertionError: ",
+                "test_basic_empty: UnboundLocalError: cannot access local variable 'mid' where it is not associated with a value"
+              ]
+            }
+          ],
+          "duration_s": 7.71
+        },
+        {
+          "ok": true,
+          "task_id": "bugfix_inventory",
+          "title": "Fix inventory validation",
+          "kind": "code",
+          "category": "bugfix",
+          "difficulty": "medium",
+          "reference_ok": true,
+          "reference_score": 1.0,
+          "reference_resolved": true,
+          "reference_passed": 10,
+          "reference_total": 10,
+          "reference_errors": [],
+          "mutants_ok": true,
+          "mutants": [
+            {
+              "index": 0,
+              "rejected": true,
+              "score": 0.44,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_edge_unknown_remove: KeyError: 'missing'",
+                "test_edge_insufficient_remove: AssertionError: ValueError not raised",
+                "test_edge_non_positive_quantities: AssertionError: ValueError not raised"
+              ]
+            },
+            {
+              "index": 1,
+              "rejected": true,
+              "score": 0.86,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_edge_non_positive_quantities: AssertionError: ValueError not raised"
+              ]
+            },
+            {
+              "index": 2,
+              "rejected": true,
+              "score": 0.86,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_edge_non_positive_quantities: AssertionError: ValueError not raised"
+              ]
+            }
+          ],
+          "duration_s": 1.622
+        },
+        {
+          "ok": true,
+          "task_id": "completion_parse_duration",
+          "title": "Complete a duration parser",
+          "kind": "code",
+          "category": "completion",
+          "difficulty": "medium",
+          "reference_ok": true,
+          "reference_score": 1.0,
+          "reference_resolved": true,
+          "reference_passed": 10,
+          "reference_total": 10,
+          "reference_errors": [],
+          "mutants_ok": true,
+          "mutants": [
+            {
+              "index": 0,
+              "rejected": true,
+              "score": 0.86,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_edge_invalid_values: AssertionError: ValueError not raised for ''"
+              ]
+            },
+            {
+              "index": 1,
+              "rejected": true,
+              "score": 0.86,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_edge_invalid_values: AssertionError: ValueError not raised for '1h30'"
+              ]
+            },
+            {
+              "index": 2,
+              "rejected": true,
+              "score": 0.6,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_basic_seconds: ValueError: invalid duration",
+                "test_basic_all_units: ValueError: invalid duration",
+                "test_edge_zero: ValueError: invalid duration"
+              ]
+            }
+          ],
+          "duration_s": 1.613
+        },
+        {
+          "ok": true,
+          "task_id": "refactor_summarize",
+          "title": "Refactor a multi-pass summary function",
+          "kind": "code",
+          "category": "refactor",
+          "difficulty": "medium",
+          "reference_ok": true,
+          "reference_score": 1.0,
+          "reference_resolved": true,
+          "reference_passed": 9,
+          "reference_total": 9,
+          "reference_errors": [],
+          "mutants_ok": true,
+          "mutants": [
+            {
+              "index": 0,
+              "rejected": true,
+              "score": 0.8533,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_edge_generator: TypeError: object of type 'generator' has no len()"
+              ]
+            },
+            {
+              "index": 1,
+              "rejected": true,
+              "score": 0.7867,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_basic_list: AssertionError: ",
+                "test_edge_generator: AssertionError: "
+              ]
+            },
+            {
+              "index": 2,
+              "rejected": true,
+              "score": 0.4267,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "test_basic_list: AssertionError: ",
+                "test_basic_tuple: AssertionError: ",
+                "test_edge_single_value: AssertionError: "
+              ]
+            }
+          ],
+          "duration_s": 1.446
+        },
+        {
+          "ok": true,
+          "task_id": "program_json_flatten",
+          "title": "Standalone JSON flattener",
+          "kind": "program",
+          "category": "program",
+          "difficulty": "medium",
+          "reference_ok": true,
+          "reference_score": 1.0,
+          "reference_resolved": true,
+          "reference_passed": 10,
+          "reference_total": 10,
+          "reference_errors": [],
+          "mutants_ok": true,
+          "mutants": [
+            {
+              "index": 0,
+              "rejected": true,
+              "score": 0.7657,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "edge_lexicographic_sort: expected 'a.10=ten\\na.2=two\\nb=0', got 'a.2=two\\na.10=ten\\nb=0'",
+                "edge_numbers: expected 'f=1.5\\ni=1\\nneg=-2', got 'i=1\\nf=1.5\\nneg=-2'"
+              ]
+            },
+            {
+              "index": 1,
+              "rejected": true,
+              "score": 0.6457,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "basic_array: expected 'items.0=10\\nitems.1=20', got 'items=10\\nitems=20'",
+                "basic_mixed: expected 'a.0=true\\na.1=null\\na.2=1.5\\nb.c=x', got 'a=true\\na=null\\na=1.5\\nb.c=x'",
+                "edge_root_array: expected '0.x=1\\n1=2', got '=2\\nx=1'"
+              ]
+            },
+            {
+              "index": 2,
+              "rejected": true,
+              "score": 0.94,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "basic_mixed: expected 'a.0=true\\na.1=null\\na.2=1.5\\nb.c=x', got 'a.0=True\\na.1=null\\na.2=1.5\\nb.c=x'"
+              ]
+            }
+          ],
+          "duration_s": 0.998
+        },
+        {
+          "ok": true,
+          "task_id": "program_word_freq",
+          "title": "Standalone word frequency report",
+          "kind": "program",
+          "category": "program",
+          "difficulty": "medium",
+          "reference_ok": true,
+          "reference_score": 1.0,
+          "reference_resolved": true,
+          "reference_passed": 10,
+          "reference_total": 10,
+          "reference_errors": [],
+          "mutants_ok": true,
+          "mutants": [
+            {
+              "index": 0,
+              "rejected": true,
+              "score": 0.7629,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "basic_two_words: expected 'hello 2\\nworld 1', got 'Hello 1\\nhello 1\\nworld 1'",
+                "basic_punctuation: expected 'two 2\\none 1\\nthree 1', got 'One 1\\nTwo 1\\nthree 1'",
+                "edge_casefold: expected 'a 3\\nb 2\\nc 1', got 'a 2\\nA 1\\nB 1'"
+              ]
+            },
+            {
+              "index": 1,
+              "rejected": true,
+              "score": 0.8229,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "basic_simple: expected 'the 2\\nand 1\\ncat 1', got 'the 2\\ncat 1\\nand 1'",
+                "edge_tie_break: expected 'x 1\\ny 1\\nz 1', got 'z 1\\ny 1\\nx 1'"
+              ]
+            },
+            {
+              "index": 2,
+              "rejected": true,
+              "score": 0.7657,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "edge_apostrophe: expected 'don 2\\nt 2\\nstop 1', got \"don't 2\\nstop 1\"",
+                "edge_ascii_only: expected 'caf 1\\ncafe 1', got 'cafe 1\\ncafé 1'"
+              ]
+            }
+          ],
+          "duration_s": 0.923
+        },
+        {
+          "ok": true,
+          "task_id": "sql_top_customers",
+          "title": "Top customers including ties",
+          "kind": "sql",
+          "category": "sql",
+          "difficulty": "medium",
+          "reference_ok": true,
+          "reference_score": 1.0,
+          "reference_resolved": true,
+          "reference_passed": 5,
+          "reference_total": 5,
+          "reference_errors": [],
+          "mutants_ok": true,
+          "mutants": [
+            {
+              "index": 0,
+              "rejected": true,
+              "score": 0.4933,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "edge_tie_for_second: expected [('Alice', 100.0), ('Bob', 50.0), ('Carol', 50.0)], got [('Alice', 100.0), ('Bob', 50.0)]",
+                "edge_tie_for_first: expected [('Alice', 100.0), ('Bob', 100.0), ('Carol', 50.0)], got [('Alice', 100.0), ('Bob', 100.0)]"
+              ]
+            },
+            {
+              "index": 1,
+              "rejected": true,
+              "score": 0.4933,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "edge_tie_for_second: expected [('Alice', 100.0), ('Bob', 50.0), ('Carol', 50.0)], got [('Alice', 100.0), ('Bob', 50.0)]",
+                "edge_tie_for_first: expected [('Alice', 100.0), ('Bob', 100.0), ('Carol', 50.0)], got [('Alice', 100.0), ('Bob', 100.0)]"
+              ]
+            },
+            {
+              "index": 2,
+              "rejected": true,
+              "score": 0.12,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "basic_top_two: expected [('Alice', 150.0), ('Bob', 40.0)], got [('Carol', 30.0), ('Bob', 40.0)]",
+                "edge_tie_for_second: expected [('Alice', 100.0), ('Bob', 50.0), ('Carol', 50.0)], got [('Dave', 10.0), ('Bob', 50.0)]",
+                "edge_tie_for_first: expected [('Alice', 100.0), ('Bob', 100.0), ('Carol', 50.0)], got [('Dave', 10.0), ('Carol', 50.0)]"
+              ]
+            }
+          ],
+          "duration_s": 0.836
+        },
+        {
+          "ok": true,
+          "task_id": "sql_department_above_average",
+          "title": "Above-average salaries per department",
+          "kind": "sql",
+          "category": "sql",
+          "difficulty": "hard",
+          "reference_ok": true,
+          "reference_score": 1.0,
+          "reference_resolved": true,
+          "reference_passed": 5,
+          "reference_total": 5,
+          "reference_errors": [],
+          "mutants_ok": true,
+          "mutants": [
+            {
+              "index": 0,
+              "rejected": true,
+              "score": 0.34,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "edge_all_equal: expected [], got [('Eng', 'A', 100.0), ('Eng', 'B', 100.0)]",
+                "edge_single_employee_departments: expected [], got [('Eng', 'A', 100.0), ('Sales', 'B', 200.0)]",
+                "edge_department_vs_overall_average: expected [], got [('Eng', 'A', 100.0), ('Eng', 'B', 100.0), ('Eng', 'C', 100.0), ('Sales', 'D', 10.0), ('Sales', 'E', 10.0)]"
+              ]
+            },
+            {
+              "index": 1,
+              "rejected": true,
+              "score": 0.56,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "edge_single_employee_departments: expected [], got [('Sales', 'B', 200.0)]",
+                "edge_department_vs_overall_average: expected [], got [('Eng', 'A', 100.0), ('Eng', 'B', 100.0), ('Eng', 'C', 100.0)]"
+              ]
+            },
+            {
+              "index": 2,
+              "rejected": true,
+              "score": 0.66,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "basic_above_department_average: expected [('Eng', 'Alice', 100.0), ('Sales', 'Eve', 110.0)], got [('Sales', 'Eve', 110.0), ('Eng', 'Alice', 100.0)]",
+                "edge_order_and_ties: expected [('A', 'Amy', 300.0), ('A', 'Zed', 300.0), ('B', 'Cara', 400.0)], got [('B', 'Cara', 400.0), ('A', 'Amy', 300.0), ('A', 'Zed', 300.0)]"
+              ]
+            }
+          ],
+          "duration_s": 0.813
+        },
+        {
+          "ok": true,
+          "task_id": "regex_semver",
+          "title": "Semantic version matcher",
+          "kind": "regex",
+          "category": "regex",
+          "difficulty": "medium",
+          "reference_ok": true,
+          "reference_score": 1.0,
+          "reference_resolved": true,
+          "reference_passed": 14,
+          "reference_total": 14,
+          "reference_errors": [],
+          "mutants_ok": true,
+          "mutants": [
+            {
+              "index": 0,
+              "rejected": true,
+              "score": 0.5,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "basic_prerelease: expected match '2.0.0-beta.1', got '2.0.0'",
+                "basic_build: expected match '3.4.5+build.7', got '3.4.5'",
+                "edge_prerelease_dots: expected match '1.2.3-alpha.1', got '1.2.3'"
+              ]
+            },
+            {
+              "index": 1,
+              "rejected": true,
+              "score": 0.5,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "basic_prerelease: expected match '2.0.0-beta.1', got '2.0.0'",
+                "basic_build: expected match '3.4.5+build.7', got '3.4.5'",
+                "edge_prerelease_dots: expected match '1.2.3-alpha.1', got '1.2.3'"
+              ]
+            },
+            {
+              "index": 2,
+              "rejected": true,
+              "score": 0.7486,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "basic_prerelease: expected match '2.0.0-beta.1', got '2.0.0'",
+                "basic_build: expected match '3.4.5+build.7', got '3.4.5'",
+                "edge_prerelease_dots: expected match '1.2.3-alpha.1', got '1.2.3'"
+              ]
+            }
+          ],
+          "duration_s": 0.001
+        },
+        {
+          "ok": true,
+          "task_id": "regex_password",
+          "title": "Password policy regex",
+          "kind": "regex",
+          "category": "regex",
+          "difficulty": "medium",
+          "reference_ok": true,
+          "reference_score": 1.0,
+          "reference_resolved": true,
+          "reference_passed": 14,
+          "reference_total": 14,
+          "reference_errors": [],
+          "mutants_ok": true,
+          "mutants": [
+            {
+              "index": 0,
+              "rejected": true,
+              "score": 0.9071,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "edge_over_max_length: unexpected match 'Aa1!aaaaaaaaaaaaaaaaaaaaaaaaaaaaa' in 'Aa1!aaaaaaaaaaaaaaaaaaaaaaaaaaaaa'"
+              ]
+            },
+            {
+              "index": 1,
+              "rejected": true,
+              "score": 0.9571,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "basic_no_uppercase: unexpected match 'abcdef1!' in 'abcdef1!'"
+              ]
+            },
+            {
+              "index": 2,
+              "rejected": true,
+              "score": 0.8143,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "edge_forbidden_period: unexpected match 'Abcdef1!.' in 'Abcdef1!.'",
+                "edge_whitespace: unexpected match 'Abcdef1! x' in 'Abcdef1! x'"
+              ]
+            },
+            {
+              "index": 3,
+              "rejected": true,
+              "score": 0.9071,
+              "resolved": false,
+              "killed": true,
+              "errors": [
+                "edge_over_max_length: unexpected match 'Aa1!aaaaaaaaaaaaaaaaaaaaaaaaaaaaa' in 'Aa1!aaaaaaaaaaaaaaaaaaaaaaaaaaaaa'"
+              ]
+            }
+          ],
+          "duration_s": 0.001
+        },
+        {
+          "ok": true,
+          "task_id": "tests_gen_bank_account",
+          "title": "Write a high-quality test suite",
+          "kind": "tests",
+          "category": "test-generation",
+          "difficulty": "hard",
+          "reference_ok": true,
+          "reference_score": 1.0,
+          "reference_resolved": true,
+          "reference_passed": 10,
+          "reference_total": 10,
+          "reference_errors": [],
+          "mutants_ok": true,
+          "mutants": [
+            {
+              "index": 0,
+              "rejected": true,
+              "score": null,
+              "resolved": false,
+              "killed": true,
+              "detail": {
+                "index": 0,
+                "killed": true,
+                "failed_tests": [
+                  "test_edge_negative_initial_balance"
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "rejected": true,
+              "score": null,
+              "resolved": false,
+              "killed": true,
+              "detail": {
+                "index": 1,
+                "killed": true,
+                "failed_tests": [
+                  "test_edge_deposit_non_positive"
+                ]
+              }
+            },
+            {
+              "index": 2,
+              "rejected": true,
+              "score": null,
+              "resolved": false,
+              "killed": true,
+              "detail": {
+                "index": 2,
+                "killed": true,
+                "failed_tests": [
+                  "test_edge_withdraw_insufficient"
+                ]
+              }
+            },
+            {
+              "index": 3,
+              "rejected": true,
+              "score": null,
+              "resolved": false,
+              "killed": true,
+              "detail": {
+                "index": 3,
+                "killed": true,
+                "failed_tests": [
+                  "test_edge_withdraw_non_positive"
+                ]
+              }
+            }
+          ],
+          "duration_s": 2.008
+        }
+      ],
+      "task_count": 15,
+      "failed": [],
+      "surviving_mutants": 0,
+      "duration_s": 24.532
+    },
+    "finished_at": "2026-11-15T13:31:47.327599+00:00",
+    "duration_s": 151.61
+  },
+  "models": [
+    {
+      "model": "qwen3.8:latest",
+      "tasks": [
+        {
+          "task_id": "codegen_slugify",
+          "title": "URL slug generation",
+          "category": "codegen",
+          "kind": "code",
+          "difficulty": "easy",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 4.3444,
+            "ttft_s": 0.4692,
+            "eval_count": 149,
+            "prompt_eval_count": 209,
+            "eval_duration_s": 3.875,
+            "prompt_eval_duration_s": 0.2166,
+            "load_duration_s": 0.0006,
+            "total_duration_s": 4.3438,
+            "done_reason": "stop",
+            "tokens_per_s": 38.452
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17893.93,
+            "peak_used_vram_mb": 17893.93,
+            "peak_delta_vram_mb": 0.0,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 56.14,
+            "max_temp_c": 78.0,
+            "max_power_w": 231.0,
+            "avg_power_w": 135.29,
+            "samples": 7
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 11,
+            "total": 11,
+            "basic_passed": 4,
+            "basic_total": 4,
+            "edge_passed": 7,
+            "edge_total": 7,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "550 chars"
+              },
+              {
+                "name": "syntax",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "required_symbols",
+                "ok": true,
+                "detail": "all required symbols present"
+              },
+              {
+                "name": "no_placeholders",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "11 tests"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "test_basic_spaces",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0398,
+                "error": null
+              },
+              {
+                "name": "test_basic_punctuation",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0392,
+                "error": null
+              },
+              {
+                "name": "test_basic_case",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.04,
+                "error": null
+              },
+              {
+                "name": "test_basic_digits",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0393,
+                "error": null
+              },
+              {
+                "name": "test_edge_accents",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0402,
+                "error": null
+              },
+              {
+                "name": "test_edge_symbols_only",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0425,
+                "error": null
+              },
+              {
+                "name": "test_edge_empty",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0414,
+                "error": null
+              },
+              {
+                "name": "test_edge_underscores_dots",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0402,
+                "error": null
+              },
+              {
+                "name": "test_edge_non_ascii",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0402,
+                "error": null
+              },
+              {
+                "name": "test_edge_multiple_separators",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0384,
+                "error": null
+              },
+              {
+                "name": "test_edge_leading_trailing",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0387,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "extracted_chars": 550
+          },
+          "error": null,
+          "duration_s": 5.083,
+          "output_chars": 564,
+          "thinking_chars": 0,
+          "requested_max_predict": 768
+        },
+        {
+          "task_id": "codegen_merge_intervals",
+          "title": "Merge overlapping intervals",
+          "category": "codegen",
+          "kind": "code",
+          "difficulty": "medium",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 5.3453,
+            "ttft_s": 1.5457,
+            "eval_count": 152,
+            "prompt_eval_count": 216,
+            "eval_duration_s": 3.7996,
+            "prompt_eval_duration_s": 1.3434,
+            "load_duration_s": 0.0007,
+            "total_duration_s": 5.3448,
+            "done_reason": "stop",
+            "tokens_per_s": 40.004
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17893.93,
+            "peak_used_vram_mb": 17893.93,
+            "peak_delta_vram_mb": 0.0,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 72.62,
+            "max_temp_c": 83.0,
+            "max_power_w": 230.0,
+            "avg_power_w": 160.88,
+            "samples": 8
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 10,
+            "total": 10,
+            "basic_passed": 4,
+            "basic_total": 4,
+            "edge_passed": 6,
+            "edge_total": 6,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "567 chars"
+              },
+              {
+                "name": "syntax",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "required_symbols",
+                "ok": true,
+                "detail": "all required symbols present"
+              },
+              {
+                "name": "no_placeholders",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "10 tests"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "test_basic_overlap",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0393,
+                "error": null
+              },
+              {
+                "name": "test_basic_disjoint",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0391,
+                "error": null
+              },
+              {
+                "name": "test_basic_unsorted",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0409,
+                "error": null
+              },
+              {
+                "name": "test_basic_touching",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0402,
+                "error": null
+              },
+              {
+                "name": "test_edge_nested",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0407,
+                "error": null
+              },
+              {
+                "name": "test_edge_empty",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0395,
+                "error": null
+              },
+              {
+                "name": "test_edge_negative",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0391,
+                "error": null
+              },
+              {
+                "name": "test_edge_duplicates",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0421,
+                "error": null
+              },
+              {
+                "name": "test_edge_single",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0393,
+                "error": null
+              },
+              {
+                "name": "test_edge_no_mutation",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0392,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "extracted_chars": 567
+          },
+          "error": null,
+          "duration_s": 5.989,
+          "output_chars": 605,
+          "thinking_chars": 0,
+          "requested_max_predict": 768
+        },
+        {
+          "task_id": "codegen_lru_cache",
+          "title": "LRU cache",
+          "category": "codegen",
+          "kind": "code",
+          "difficulty": "medium",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 11.8516,
+            "ttft_s": 1.5174,
+            "eval_count": 432,
+            "prompt_eval_count": 247,
+            "eval_duration_s": 10.3341,
+            "prompt_eval_duration_s": 1.3229,
+            "load_duration_s": 0.0006,
+            "total_duration_s": 11.851,
+            "done_reason": "stop",
+            "tokens_per_s": 41.803
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17893.93,
+            "peak_used_vram_mb": 17893.93,
+            "peak_delta_vram_mb": 0.0,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 86.27,
+            "max_temp_c": 94.0,
+            "max_power_w": 230.0,
+            "avg_power_w": 196.13,
+            "samples": 15
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 9,
+            "total": 9,
+            "basic_passed": 4,
+            "basic_total": 4,
+            "edge_passed": 5,
+            "edge_total": 5,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "1678 chars"
+              },
+              {
+                "name": "syntax",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "required_symbols",
+                "ok": true,
+                "detail": "all required symbols present"
+              },
+              {
+                "name": "no_placeholders",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "9 tests"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "test_basic_put_get",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0393,
+                "error": null
+              },
+              {
+                "name": "test_basic_missing",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.041,
+                "error": null
+              },
+              {
+                "name": "test_basic_eviction",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0392,
+                "error": null
+              },
+              {
+                "name": "test_basic_update_value",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0398,
+                "error": null
+              },
+              {
+                "name": "test_edge_capacity_one",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0402,
+                "error": null
+              },
+              {
+                "name": "test_edge_invalid_capacity",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.039,
+                "error": null
+              },
+              {
+                "name": "test_edge_update_resets_recency",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0392,
+                "error": null
+              },
+              {
+                "name": "test_edge_get_updates_recency",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0408,
+                "error": null
+              },
+              {
+                "name": "test_edge_many_operations",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0393,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "extracted_chars": 1678
+          },
+          "error": null,
+          "duration_s": 12.46,
+          "output_chars": 1692,
+          "thinking_chars": 0,
+          "requested_max_predict": 768
+        },
+        {
+          "task_id": "codegen_topological_sort",
+          "title": "Topological sort with cycle detection",
+          "category": "codegen",
+          "kind": "code",
+          "difficulty": "hard",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 8.6041,
+            "ttft_s": 1.5596,
+            "eval_count": 299,
+            "prompt_eval_count": 230,
+            "eval_duration_s": 7.0444,
+            "prompt_eval_duration_s": 1.3596,
+            "load_duration_s": 0.0006,
+            "total_duration_s": 8.6036,
+            "done_reason": "stop",
+            "tokens_per_s": 42.445
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17893.93,
+            "peak_used_vram_mb": 17893.93,
+            "peak_delta_vram_mb": 0.0,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 81.82,
+            "max_temp_c": 100.0,
+            "max_power_w": 231.0,
+            "avg_power_w": 179.0,
+            "samples": 11
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 10,
+            "total": 10,
+            "basic_passed": 5,
+            "basic_total": 5,
+            "edge_passed": 5,
+            "edge_total": 5,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "980 chars"
+              },
+              {
+                "name": "syntax",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "required_symbols",
+                "ok": true,
+                "detail": "all required symbols present"
+              },
+              {
+                "name": "no_placeholders",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "10 tests"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "test_basic_chain",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0399,
+                "error": null
+              },
+              {
+                "name": "test_basic_diamond",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0386,
+                "error": null
+              },
+              {
+                "name": "test_basic_disconnected",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0404,
+                "error": null
+              },
+              {
+                "name": "test_basic_empty",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0392,
+                "error": null
+              },
+              {
+                "name": "test_basic_single",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0393,
+                "error": null
+              },
+              {
+                "name": "test_edge_cycle_raises",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0403,
+                "error": null
+              },
+              {
+                "name": "test_edge_self_loop_raises",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0404,
+                "error": null
+              },
+              {
+                "name": "test_edge_duplicate_edges",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0394,
+                "error": null
+              },
+              {
+                "name": "test_edge_isolated_nodes",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0385,
+                "error": null
+              },
+              {
+                "name": "test_edge_out_of_range",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0394,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "extracted_chars": 980
+          },
+          "error": null,
+          "duration_s": 9.243,
+          "output_chars": 1026,
+          "thinking_chars": 0,
+          "requested_max_predict": 768
+        },
+        {
+          "task_id": "bugfix_binary_search",
+          "title": "Fix an infinite-loop binary search",
+          "category": "bugfix",
+          "kind": "code",
+          "difficulty": "easy",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 2.5738,
+            "ttft_s": 0.4723,
+            "eval_count": 94,
+            "prompt_eval_count": 254,
+            "eval_duration_s": 2.1014,
+            "prompt_eval_duration_s": 0.2234,
+            "load_duration_s": 0.0006,
+            "total_duration_s": 2.5734,
+            "done_reason": "stop",
+            "tokens_per_s": 44.732
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17893.93,
+            "peak_used_vram_mb": 17893.93,
+            "peak_delta_vram_mb": 0.0,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 40.0,
+            "max_temp_c": 100.0,
+            "max_power_w": 224.0,
+            "avg_power_w": 96.4,
+            "samples": 5
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 11,
+            "total": 11,
+            "basic_passed": 5,
+            "basic_total": 5,
+            "edge_passed": 6,
+            "edge_total": 6,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "273 chars"
+              },
+              {
+                "name": "syntax",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "required_symbols",
+                "ok": true,
+                "detail": "all required symbols present"
+              },
+              {
+                "name": "no_placeholders",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "11 tests"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "test_basic_found_middle",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0394,
+                "error": null
+              },
+              {
+                "name": "test_basic_found_first",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0399,
+                "error": null
+              },
+              {
+                "name": "test_basic_found_last",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0388,
+                "error": null
+              },
+              {
+                "name": "test_basic_absent",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0393,
+                "error": null
+              },
+              {
+                "name": "test_basic_empty",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.045,
+                "error": null
+              },
+              {
+                "name": "test_edge_single_present",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0398,
+                "error": null
+              },
+              {
+                "name": "test_edge_single_absent",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0452,
+                "error": null
+              },
+              {
+                "name": "test_edge_duplicates",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0402,
+                "error": null
+              },
+              {
+                "name": "test_edge_negative_values",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0399,
+                "error": null
+              },
+              {
+                "name": "test_edge_no_mutation",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0387,
+                "error": null
+              },
+              {
+                "name": "test_edge_large_list",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0389,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "extracted_chars": 273
+          },
+          "error": null,
+          "duration_s": 3.345,
+          "output_chars": 287,
+          "thinking_chars": 0,
+          "requested_max_predict": 768
+        },
+        {
+          "task_id": "bugfix_inventory",
+          "title": "Fix inventory validation",
+          "category": "bugfix",
+          "kind": "code",
+          "difficulty": "medium",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 6.2519,
+            "ttft_s": 1.5554,
+            "eval_count": 195,
+            "prompt_eval_count": 249,
+            "eval_duration_s": 4.6964,
+            "prompt_eval_duration_s": 1.3588,
+            "load_duration_s": 0.0006,
+            "total_duration_s": 6.2515,
+            "done_reason": "stop",
+            "tokens_per_s": 41.521
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17893.93,
+            "peak_used_vram_mb": 17893.93,
+            "peak_delta_vram_mb": 0.0,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 76.78,
+            "max_temp_c": 101.0,
+            "max_power_w": 236.0,
+            "avg_power_w": 147.89,
+            "samples": 9
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 10,
+            "total": 10,
+            "basic_passed": 5,
+            "basic_total": 5,
+            "edge_passed": 5,
+            "edge_total": 5,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "712 chars"
+              },
+              {
+                "name": "syntax",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "required_symbols",
+                "ok": true,
+                "detail": "all required symbols present"
+              },
+              {
+                "name": "no_placeholders",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "10 tests"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "test_basic_add_and_count",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0398,
+                "error": null
+              },
+              {
+                "name": "test_basic_add_existing",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0403,
+                "error": null
+              },
+              {
+                "name": "test_basic_remove",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0391,
+                "error": null
+              },
+              {
+                "name": "test_basic_remove_exact",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0401,
+                "error": null
+              },
+              {
+                "name": "test_basic_unknown_count",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0395,
+                "error": null
+              },
+              {
+                "name": "test_edge_unknown_remove",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0452,
+                "error": null
+              },
+              {
+                "name": "test_edge_insufficient_remove",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0403,
+                "error": null
+              },
+              {
+                "name": "test_edge_non_positive_quantities",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0421,
+                "error": null
+              },
+              {
+                "name": "test_edge_multiple_items",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0402,
+                "error": null
+              },
+              {
+                "name": "test_edge_never_negative",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0401,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "extracted_chars": 712
+          },
+          "error": null,
+          "duration_s": 6.904,
+          "output_chars": 726,
+          "thinking_chars": 0,
+          "requested_max_predict": 768
+        },
+        {
+          "task_id": "completion_parse_duration",
+          "title": "Complete a duration parser",
+          "category": "completion",
+          "kind": "code",
+          "difficulty": "medium",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 10.9434,
+            "ttft_s": 1.49,
+            "eval_count": 351,
+            "prompt_eval_count": 214,
+            "eval_duration_s": 9.4533,
+            "prompt_eval_duration_s": 1.2926,
+            "load_duration_s": 0.0006,
+            "total_duration_s": 10.9429,
+            "done_reason": "stop",
+            "tokens_per_s": 37.13
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17893.93,
+            "peak_used_vram_mb": 17893.93,
+            "peak_delta_vram_mb": 0.0,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 85.29,
+            "max_temp_c": 103.0,
+            "max_power_w": 243.0,
+            "avg_power_w": 159.57,
+            "samples": 14
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 10,
+            "total": 10,
+            "basic_passed": 5,
+            "basic_total": 5,
+            "edge_passed": 5,
+            "edge_total": 5,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "1105 chars"
+              },
+              {
+                "name": "syntax",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "required_symbols",
+                "ok": true,
+                "detail": "all required symbols present"
+              },
+              {
+                "name": "no_placeholders",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "10 tests"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "test_basic_seconds",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0402,
+                "error": null
+              },
+              {
+                "name": "test_basic_minutes",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0394,
+                "error": null
+              },
+              {
+                "name": "test_basic_hours",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0406,
+                "error": null
+              },
+              {
+                "name": "test_basic_hours_minutes",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0413,
+                "error": null
+              },
+              {
+                "name": "test_basic_all_units",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0387,
+                "error": null
+              },
+              {
+                "name": "test_edge_zero",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.039,
+                "error": null
+              },
+              {
+                "name": "test_edge_minutes_seconds",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0394,
+                "error": null
+              },
+              {
+                "name": "test_edge_invalid_values",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0397,
+                "error": null
+              },
+              {
+                "name": "test_edge_large_values",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0406,
+                "error": null
+              },
+              {
+                "name": "test_edge_single_zero_minutes",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0389,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "extracted_chars": 1105
+          },
+          "error": null,
+          "duration_s": 11.591,
+          "output_chars": 1139,
+          "thinking_chars": 0,
+          "requested_max_predict": 768
+        },
+        {
+          "task_id": "refactor_summarize",
+          "title": "Refactor a multi-pass summary function",
+          "category": "refactor",
+          "kind": "code",
+          "difficulty": "medium",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 6.6289,
+            "ttft_s": 2.1414,
+            "eval_count": 164,
+            "prompt_eval_count": 337,
+            "eval_duration_s": 4.4874,
+            "prompt_eval_duration_s": 1.9402,
+            "load_duration_s": 0.0006,
+            "total_duration_s": 6.6284,
+            "done_reason": "stop",
+            "tokens_per_s": 36.547
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17893.93,
+            "peak_used_vram_mb": 17899.88,
+            "peak_delta_vram_mb": 5.95,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 75.33,
+            "max_temp_c": 104.0,
+            "max_power_w": 206.0,
+            "avg_power_w": 141.11,
+            "samples": 9
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 9,
+            "total": 9,
+            "basic_passed": 4,
+            "basic_total": 4,
+            "edge_passed": 5,
+            "edge_total": 5,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "545 chars"
+              },
+              {
+                "name": "syntax",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "required_symbols",
+                "ok": true,
+                "detail": "all required symbols present"
+              },
+              {
+                "name": "no_placeholders",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "9 tests"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "test_basic_list",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0405,
+                "error": null
+              },
+              {
+                "name": "test_basic_empty",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0414,
+                "error": null
+              },
+              {
+                "name": "test_basic_tuple",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.041,
+                "error": null
+              },
+              {
+                "name": "test_basic_negative",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0391,
+                "error": null
+              },
+              {
+                "name": "test_edge_single_value",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0378,
+                "error": null
+              },
+              {
+                "name": "test_edge_floats",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0383,
+                "error": null
+              },
+              {
+                "name": "test_edge_generator",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0386,
+                "error": null
+              },
+              {
+                "name": "test_edge_no_mutation",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0385,
+                "error": null
+              },
+              {
+                "name": "test_edge_large_input",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0392,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "extracted_chars": 545
+          },
+          "error": null,
+          "duration_s": 7.222,
+          "output_chars": 559,
+          "thinking_chars": 0,
+          "requested_max_predict": 768
+        },
+        {
+          "task_id": "program_json_flatten",
+          "title": "Standalone JSON flattener",
+          "category": "program",
+          "kind": "program",
+          "difficulty": "medium",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 10.7191,
+            "ttft_s": 1.6445,
+            "eval_count": 294,
+            "prompt_eval_count": 239,
+            "eval_duration_s": 9.0745,
+            "prompt_eval_duration_s": 1.4518,
+            "load_duration_s": 0.0006,
+            "total_duration_s": 10.7186,
+            "done_reason": "stop",
+            "tokens_per_s": 32.398
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17899.88,
+            "peak_used_vram_mb": 17899.88,
+            "peak_delta_vram_mb": 0.0,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 83.36,
+            "max_temp_c": 104.0,
+            "max_power_w": 239.0,
+            "avg_power_w": 133.43,
+            "samples": 14
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 10,
+            "total": 10,
+            "basic_passed": 3,
+            "basic_total": 3,
+            "edge_passed": 7,
+            "edge_total": 7,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "1138 chars"
+              },
+              {
+                "name": "syntax",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "no_placeholders",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "10 cases"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "basic_nested_object",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.027,
+                "error": null
+              },
+              {
+                "name": "basic_array",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0263,
+                "error": null
+              },
+              {
+                "name": "basic_mixed",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0265,
+                "error": null
+              },
+              {
+                "name": "edge_empty_object",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0263,
+                "error": null
+              },
+              {
+                "name": "edge_empty_array",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0251,
+                "error": null
+              },
+              {
+                "name": "edge_root_array",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0285,
+                "error": null
+              },
+              {
+                "name": "edge_lexicographic_sort",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0278,
+                "error": null
+              },
+              {
+                "name": "edge_nested_arrays",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0297,
+                "error": null
+              },
+              {
+                "name": "edge_unicode_string",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0246,
+                "error": null
+              },
+              {
+                "name": "edge_numbers",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0254,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "extracted_chars": 1138
+          },
+          "error": null,
+          "duration_s": 11.227,
+          "output_chars": 1152,
+          "thinking_chars": 0,
+          "requested_max_predict": 900
+        },
+        {
+          "task_id": "program_word_freq",
+          "title": "Standalone word frequency report",
+          "category": "program",
+          "kind": "program",
+          "difficulty": "medium",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 7.1368,
+            "ttft_s": 1.3655,
+            "eval_count": 176,
+            "prompt_eval_count": 189,
+            "eval_duration_s": 5.7713,
+            "prompt_eval_duration_s": 1.1663,
+            "load_duration_s": 0.0006,
+            "total_duration_s": 7.1364,
+            "done_reason": "stop",
+            "tokens_per_s": 30.496
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17899.88,
+            "peak_used_vram_mb": 17899.88,
+            "peak_delta_vram_mb": 0.0,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 76.9,
+            "max_temp_c": 104.0,
+            "max_power_w": 203.0,
+            "avg_power_w": 115.8,
+            "samples": 10
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 10,
+            "total": 10,
+            "basic_passed": 3,
+            "basic_total": 3,
+            "edge_passed": 7,
+            "edge_total": 7,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "604 chars"
+              },
+              {
+                "name": "syntax",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "no_placeholders",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "10 cases"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "basic_simple",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0235,
+                "error": null
+              },
+              {
+                "name": "basic_two_words",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0231,
+                "error": null
+              },
+              {
+                "name": "basic_punctuation",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0237,
+                "error": null
+              },
+              {
+                "name": "edge_empty",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0232,
+                "error": null
+              },
+              {
+                "name": "edge_only_punctuation",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0243,
+                "error": null
+              },
+              {
+                "name": "edge_casefold",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0236,
+                "error": null
+              },
+              {
+                "name": "edge_tie_break",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0231,
+                "error": null
+              },
+              {
+                "name": "edge_numbers",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0219,
+                "error": null
+              },
+              {
+                "name": "edge_apostrophe",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0241,
+                "error": null
+              },
+              {
+                "name": "edge_ascii_only",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0233,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "extracted_chars": 604
+          },
+          "error": null,
+          "duration_s": 7.618,
+          "output_chars": 618,
+          "thinking_chars": 0,
+          "requested_max_predict": 800
+        },
+        {
+          "task_id": "sql_top_customers",
+          "title": "Top customers including ties",
+          "category": "sql",
+          "kind": "sql",
+          "difficulty": "medium",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 5.2116,
+            "ttft_s": 1.364,
+            "eval_count": 127,
+            "prompt_eval_count": 188,
+            "eval_duration_s": 3.8474,
+            "prompt_eval_duration_s": 1.1734,
+            "load_duration_s": 0.0006,
+            "total_duration_s": 5.2112,
+            "done_reason": "stop",
+            "tokens_per_s": 33.009
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17899.88,
+            "peak_used_vram_mb": 17899.88,
+            "peak_delta_vram_mb": 0.0,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 59.38,
+            "max_temp_c": 99.0,
+            "max_power_w": 188.0,
+            "avg_power_w": 95.5,
+            "samples": 8
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 5,
+            "total": 5,
+            "basic_passed": 2,
+            "basic_total": 2,
+            "edge_passed": 3,
+            "edge_total": 3,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "463 chars"
+              },
+              {
+                "name": "read_only",
+                "ok": true,
+                "detail": "read-only SELECT"
+              },
+              {
+                "name": "single_statement",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "5 cases"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "basic_top_two",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0428,
+                "error": null
+              },
+              {
+                "name": "basic_single_customer",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0391,
+                "error": null
+              },
+              {
+                "name": "edge_tie_for_second",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0396,
+                "error": null
+              },
+              {
+                "name": "edge_tie_for_first",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0415,
+                "error": null
+              },
+              {
+                "name": "edge_customers_without_orders",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0434,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "extracted_chars": 463
+          },
+          "error": null,
+          "duration_s": 5.706,
+          "output_chars": 474,
+          "thinking_chars": 0,
+          "requested_max_predict": 768
+        },
+        {
+          "task_id": "sql_department_above_average",
+          "title": "Above-average salaries per department",
+          "category": "sql",
+          "kind": "sql",
+          "difficulty": "hard",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 3.8008,
+            "ttft_s": 1.326,
+            "eval_count": 82,
+            "prompt_eval_count": 153,
+            "eval_duration_s": 2.4746,
+            "prompt_eval_duration_s": 1.139,
+            "load_duration_s": 0.0006,
+            "total_duration_s": 3.8003,
+            "done_reason": "stop",
+            "tokens_per_s": 33.137
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17899.88,
+            "peak_used_vram_mb": 17899.88,
+            "peak_delta_vram_mb": 0.0,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 66.5,
+            "max_temp_c": 100.0,
+            "max_power_w": 204.0,
+            "avg_power_w": 109.5,
+            "samples": 6
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 5,
+            "total": 5,
+            "basic_passed": 1,
+            "basic_total": 1,
+            "edge_passed": 4,
+            "edge_total": 4,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "298 chars"
+              },
+              {
+                "name": "read_only",
+                "ok": true,
+                "detail": "read-only SELECT"
+              },
+              {
+                "name": "single_statement",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "5 cases"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "basic_above_department_average",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0425,
+                "error": null
+              },
+              {
+                "name": "edge_all_equal",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0428,
+                "error": null
+              },
+              {
+                "name": "edge_single_employee_departments",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0399,
+                "error": null
+              },
+              {
+                "name": "edge_order_and_ties",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0391,
+                "error": null
+              },
+              {
+                "name": "edge_department_vs_overall_average",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0409,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "extracted_chars": 298
+          },
+          "error": null,
+          "duration_s": 4.265,
+          "output_chars": 309,
+          "thinking_chars": 0,
+          "requested_max_predict": 768
+        },
+        {
+          "task_id": "regex_semver",
+          "title": "Semantic version matcher",
+          "category": "regex",
+          "kind": "regex",
+          "difficulty": "medium",
+          "score": 0.8343,
+          "resolved": false,
+          "metrics": {
+            "wall_s": 4.8904,
+            "ttft_s": 1.9896,
+            "eval_count": 79,
+            "prompt_eval_count": 290,
+            "eval_duration_s": 2.9008,
+            "prompt_eval_duration_s": 1.7891,
+            "load_duration_s": 0.0008,
+            "total_duration_s": 4.8898,
+            "done_reason": "stop",
+            "tokens_per_s": 27.234
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17899.88,
+            "peak_used_vram_mb": 17899.88,
+            "peak_delta_vram_mb": 0.0,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 71.43,
+            "max_temp_c": 99.0,
+            "max_power_w": 143.0,
+            "avg_power_w": 97.29,
+            "samples": 7
+          },
+          "validation": {
+            "score": 0.8343,
+            "resolved": false,
+            "correctness": 0.8571,
+            "depth": 0.8,
+            "passed": 12,
+            "total": 14,
+            "basic_passed": 4,
+            "basic_total": 4,
+            "edge_passed": 8,
+            "edge_total": 10,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "111 chars"
+              },
+              {
+                "name": "regex_compiles",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "14 cases"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "basic_core",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "basic_prerelease",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "basic_build",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "basic_zero",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "edge_multi_digit",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "edge_word_prefix",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "edge_prerelease_dots",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "edge_both_suffixes",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "edge_embedded_four_parts",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "edge_leading_zero_major",
+                "quality": "edge",
+                "ok": false,
+                "duration_s": 0.0,
+                "error": "unexpected match '01.2.3' in '01.2.3'"
+              },
+              {
+                "name": "edge_leading_zero_patch",
+                "quality": "edge",
+                "ok": false,
+                "duration_s": 0.0,
+                "error": "unexpected match '1.2.03' in '1.2.03'"
+              },
+              {
+                "name": "edge_short_version",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "edge_trailing_hyphen",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "edge_no_version",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              }
+            ],
+            "errors": [
+              "edge_leading_zero_major: unexpected match '01.2.3' in '01.2.3'",
+              "edge_leading_zero_patch: unexpected match '1.2.03' in '1.2.03'"
+            ],
+            "extracted_chars": 111
+          },
+          "error": null,
+          "duration_s": 5.137,
+          "output_chars": 128,
+          "thinking_chars": 0,
+          "requested_max_predict": 768
+        },
+        {
+          "task_id": "regex_password",
+          "title": "Password policy regex",
+          "category": "regex",
+          "kind": "regex",
+          "difficulty": "medium",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 4.5038,
+            "ttft_s": 1.3205,
+            "eval_count": 89,
+            "prompt_eval_count": 159,
+            "eval_duration_s": 3.1833,
+            "prompt_eval_duration_s": 1.1367,
+            "load_duration_s": 0.0006,
+            "total_duration_s": 4.5032,
+            "done_reason": "stop",
+            "tokens_per_s": 27.958
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17899.88,
+            "peak_used_vram_mb": 17899.88,
+            "peak_delta_vram_mb": 0.0,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 64.29,
+            "max_temp_c": 103.0,
+            "max_power_w": 228.0,
+            "avg_power_w": 121.86,
+            "samples": 7
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 14,
+            "total": 14,
+            "basic_passed": 6,
+            "basic_total": 6,
+            "edge_passed": 8,
+            "edge_total": 8,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "116 chars"
+              },
+              {
+                "name": "regex_compiles",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "14 cases"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "basic_valid",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "basic_valid_other_specials",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "basic_no_special",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "basic_no_uppercase",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "basic_no_lowercase",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "basic_no_digit",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "edge_min_length",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "edge_exact_min_length",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "edge_max_length",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "edge_over_max_length",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "edge_forbidden_period",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "edge_whitespace",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "edge_unicode",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              },
+              {
+                "name": "edge_dollar_special",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "extracted_chars": 116
+          },
+          "error": null,
+          "duration_s": 4.745,
+          "output_chars": 133,
+          "thinking_chars": 0,
+          "requested_max_predict": 768
+        },
+        {
+          "task_id": "tests_gen_bank_account",
+          "title": "Write a high-quality test suite",
+          "category": "test-generation",
+          "kind": "tests",
+          "difficulty": "hard",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 22.6088,
+            "ttft_s": 2.0079,
+            "eval_count": 686,
+            "prompt_eval_count": 291,
+            "eval_duration_s": 20.5974,
+            "prompt_eval_duration_s": 1.8129,
+            "load_duration_s": 0.0006,
+            "total_duration_s": 22.6081,
+            "done_reason": "stop",
+            "tokens_per_s": 33.305
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17899.88,
+            "peak_used_vram_mb": 17899.88,
+            "peak_delta_vram_mb": 0.0,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 86.93,
+            "max_temp_c": 105.0,
+            "max_power_w": 248.0,
+            "avg_power_w": 144.19,
+            "samples": 27
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 14,
+            "total": 14,
+            "basic_passed": 14,
+            "basic_total": 14,
+            "edge_passed": 0,
+            "edge_total": 0,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "2566 chars"
+              },
+              {
+                "name": "syntax",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "min_tests",
+                "ok": true,
+                "detail": "14 test functions (minimum 6)"
+              },
+              {
+                "name": "reference_valid",
+                "ok": true,
+                "detail": "100% of tests pass on reference"
+              },
+              {
+                "name": "mutants_killed",
+                "ok": true,
+                "detail": "100% of mutants killed"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "test_initial_balance_default",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0429,
+                "error": null
+              },
+              {
+                "name": "test_initial_balance_positive",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0417,
+                "error": null
+              },
+              {
+                "name": "test_initial_balance_negative_raises",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0396,
+                "error": null
+              },
+              {
+                "name": "test_deposit_positive",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0394,
+                "error": null
+              },
+              {
+                "name": "test_deposit_zero_raises",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0389,
+                "error": null
+              },
+              {
+                "name": "test_deposit_negative_raises",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.039,
+                "error": null
+              },
+              {
+                "name": "test_deposit_non_integer_raises",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0399,
+                "error": null
+              },
+              {
+                "name": "test_withdraw_positive",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0397,
+                "error": null
+              },
+              {
+                "name": "test_withdraw_zero_raises",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.04,
+                "error": null
+              },
+              {
+                "name": "test_withdraw_negative_raises",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.041,
+                "error": null
+              },
+              {
+                "name": "test_withdraw_non_integer_raises",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0393,
+                "error": null
+              },
+              {
+                "name": "test_withdraw_exceeds_balance_raises",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0411,
+                "error": null
+              },
+              {
+                "name": "test_withdraw_exact_balance",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0393,
+                "error": null
+              },
+              {
+                "name": "test_multiple_operations",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0383,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "validity": 1.0,
+            "kill_rate": 1.0,
+            "mutant_results": [
+              {
+                "index": 0,
+                "killed": true,
+                "failed_tests": [
+                  "test_initial_balance_negative_raises"
+                ]
+              },
+              {
+                "index": 1,
+                "killed": true,
+                "failed_tests": [
+                  "test_deposit_zero_raises"
+                ]
+              },
+              {
+                "index": 2,
+                "killed": true,
+                "failed_tests": [
+                  "test_withdraw_exceeds_balance_raises"
+                ]
+              },
+              {
+                "index": 3,
+                "killed": true,
+                "failed_tests": [
+                  "test_withdraw_negative_raises"
+                ]
+              }
+            ],
+            "extracted_chars": 2566,
+            "test_count": 14,
+            "test_names": [
+              "test_initial_balance_default",
+              "test_initial_balance_positive",
+              "test_initial_balance_negative_raises",
+              "test_deposit_positive",
+              "test_deposit_zero_raises",
+              "test_deposit_negative_raises",
+              "test_deposit_non_integer_raises",
+              "test_withdraw_positive",
+              "test_withdraw_zero_raises",
+              "test_withdraw_negative_raises",
+              "test_withdraw_non_integer_raises",
+              "test_withdraw_exceeds_balance_raises",
+              "test_withdraw_exact_balance",
+              "test_multiple_operations"
+            ]
+          },
+          "error": null,
+          "duration_s": 25.655,
+          "output_chars": 2580,
+          "thinking_chars": 0,
+          "requested_max_predict": 1000
+        }
+      ],
+      "error": null,
+      "load_s": 0.0005,
+      "warmup_wall_s": 0.837,
+      "summary": {
+        "model": "qwen3.8:latest",
+        "error": null,
+        "task_count": 15,
+        "resolved_count": 14,
+        "resolved_rate": 0.9333,
+        "overall_score": 0.989,
+        "coding_score": 1.0,
+        "non_coding_score": 0.9669,
+        "test_generation_score": 1.0,
+        "correctness": 0.9905,
+        "depth": 0.9867,
+        "category_scores": {
+          "bugfix": 1.0,
+          "codegen": 1.0,
+          "completion": 1.0,
+          "program": 1.0,
+          "refactor": 1.0,
+          "regex": 0.9172,
+          "sql": 1.0,
+          "test-generation": 1.0
+        },
+        "difficulty_scores": {
+          "easy": 1.0,
+          "medium": 0.9834,
+          "hard": 1.0
+        },
+        "performance": {
+          "load_s": 0.0005,
+          "warmup_wall_s": 0.837,
+          "tokens_per_s_mean": 36.011,
+          "tokens_per_s_median": 36.547,
+          "ttft_s_mean": 1.451,
+          "eval_tokens_total": 3369,
+          "prompt_tokens_total": 3465,
+          "generation_wall_s_total": 115.41,
+          "peak_vram_mb": 17899.9,
+          "mean_delta_vram_mb": 0.4,
+          "avg_gpu_use_pct": 72.2,
+          "max_temp_c": 105.0,
+          "max_power_w": 248.0
+        },
+        "tasks": [
+          {
+            "task_id": "codegen_slugify",
+            "title": "URL slug generation",
+            "category": "codegen",
+            "kind": "code",
+            "difficulty": "easy",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 4.3444,
+              "ttft_s": 0.4692,
+              "eval_count": 149,
+              "prompt_eval_count": 209,
+              "eval_duration_s": 3.875,
+              "prompt_eval_duration_s": 0.2166,
+              "load_duration_s": 0.0006,
+              "total_duration_s": 4.3438,
+              "done_reason": "stop",
+              "tokens_per_s": 38.452
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17893.93,
+              "peak_used_vram_mb": 17893.93,
+              "peak_delta_vram_mb": 0.0,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 56.14,
+              "max_temp_c": 78.0,
+              "max_power_w": 231.0,
+              "avg_power_w": 135.29,
+              "samples": 7
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 11,
+              "total": 11,
+              "basic_passed": 4,
+              "basic_total": 4,
+              "edge_passed": 7,
+              "edge_total": 7,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "550 chars"
+                },
+                {
+                  "name": "syntax",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "required_symbols",
+                  "ok": true,
+                  "detail": "all required symbols present"
+                },
+                {
+                  "name": "no_placeholders",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "11 tests"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "test_basic_spaces",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0398,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_punctuation",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0392,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_case",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.04,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_digits",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0393,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_accents",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0402,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_symbols_only",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0425,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_empty",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0414,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_underscores_dots",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0402,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_non_ascii",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0402,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_multiple_separators",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0384,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_leading_trailing",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0387,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "extracted_chars": 550
+            },
+            "error": null,
+            "duration_s": 5.083,
+            "output_chars": 564,
+            "thinking_chars": 0,
+            "requested_max_predict": 768
+          },
+          {
+            "task_id": "codegen_merge_intervals",
+            "title": "Merge overlapping intervals",
+            "category": "codegen",
+            "kind": "code",
+            "difficulty": "medium",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 5.3453,
+              "ttft_s": 1.5457,
+              "eval_count": 152,
+              "prompt_eval_count": 216,
+              "eval_duration_s": 3.7996,
+              "prompt_eval_duration_s": 1.3434,
+              "load_duration_s": 0.0007,
+              "total_duration_s": 5.3448,
+              "done_reason": "stop",
+              "tokens_per_s": 40.004
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17893.93,
+              "peak_used_vram_mb": 17893.93,
+              "peak_delta_vram_mb": 0.0,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 72.62,
+              "max_temp_c": 83.0,
+              "max_power_w": 230.0,
+              "avg_power_w": 160.88,
+              "samples": 8
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 10,
+              "total": 10,
+              "basic_passed": 4,
+              "basic_total": 4,
+              "edge_passed": 6,
+              "edge_total": 6,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "567 chars"
+                },
+                {
+                  "name": "syntax",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "required_symbols",
+                  "ok": true,
+                  "detail": "all required symbols present"
+                },
+                {
+                  "name": "no_placeholders",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "10 tests"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "test_basic_overlap",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0393,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_disjoint",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0391,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_unsorted",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0409,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_touching",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0402,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_nested",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0407,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_empty",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0395,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_negative",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0391,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_duplicates",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0421,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_single",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0393,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_no_mutation",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0392,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "extracted_chars": 567
+            },
+            "error": null,
+            "duration_s": 5.989,
+            "output_chars": 605,
+            "thinking_chars": 0,
+            "requested_max_predict": 768
+          },
+          {
+            "task_id": "codegen_lru_cache",
+            "title": "LRU cache",
+            "category": "codegen",
+            "kind": "code",
+            "difficulty": "medium",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 11.8516,
+              "ttft_s": 1.5174,
+              "eval_count": 432,
+              "prompt_eval_count": 247,
+              "eval_duration_s": 10.3341,
+              "prompt_eval_duration_s": 1.3229,
+              "load_duration_s": 0.0006,
+              "total_duration_s": 11.851,
+              "done_reason": "stop",
+              "tokens_per_s": 41.803
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17893.93,
+              "peak_used_vram_mb": 17893.93,
+              "peak_delta_vram_mb": 0.0,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 86.27,
+              "max_temp_c": 94.0,
+              "max_power_w": 230.0,
+              "avg_power_w": 196.13,
+              "samples": 15
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 9,
+              "total": 9,
+              "basic_passed": 4,
+              "basic_total": 4,
+              "edge_passed": 5,
+              "edge_total": 5,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "1678 chars"
+                },
+                {
+                  "name": "syntax",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "required_symbols",
+                  "ok": true,
+                  "detail": "all required symbols present"
+                },
+                {
+                  "name": "no_placeholders",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "9 tests"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "test_basic_put_get",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0393,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_missing",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.041,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_eviction",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0392,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_update_value",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0398,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_capacity_one",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0402,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_invalid_capacity",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.039,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_update_resets_recency",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0392,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_get_updates_recency",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0408,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_many_operations",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0393,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "extracted_chars": 1678
+            },
+            "error": null,
+            "duration_s": 12.46,
+            "output_chars": 1692,
+            "thinking_chars": 0,
+            "requested_max_predict": 768
+          },
+          {
+            "task_id": "codegen_topological_sort",
+            "title": "Topological sort with cycle detection",
+            "category": "codegen",
+            "kind": "code",
+            "difficulty": "hard",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 8.6041,
+              "ttft_s": 1.5596,
+              "eval_count": 299,
+              "prompt_eval_count": 230,
+              "eval_duration_s": 7.0444,
+              "prompt_eval_duration_s": 1.3596,
+              "load_duration_s": 0.0006,
+              "total_duration_s": 8.6036,
+              "done_reason": "stop",
+              "tokens_per_s": 42.445
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17893.93,
+              "peak_used_vram_mb": 17893.93,
+              "peak_delta_vram_mb": 0.0,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 81.82,
+              "max_temp_c": 100.0,
+              "max_power_w": 231.0,
+              "avg_power_w": 179.0,
+              "samples": 11
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 10,
+              "total": 10,
+              "basic_passed": 5,
+              "basic_total": 5,
+              "edge_passed": 5,
+              "edge_total": 5,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "980 chars"
+                },
+                {
+                  "name": "syntax",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "required_symbols",
+                  "ok": true,
+                  "detail": "all required symbols present"
+                },
+                {
+                  "name": "no_placeholders",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "10 tests"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "test_basic_chain",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0399,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_diamond",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0386,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_disconnected",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0404,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_empty",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0392,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_single",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0393,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_cycle_raises",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0403,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_self_loop_raises",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0404,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_duplicate_edges",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0394,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_isolated_nodes",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0385,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_out_of_range",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0394,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "extracted_chars": 980
+            },
+            "error": null,
+            "duration_s": 9.243,
+            "output_chars": 1026,
+            "thinking_chars": 0,
+            "requested_max_predict": 768
+          },
+          {
+            "task_id": "bugfix_binary_search",
+            "title": "Fix an infinite-loop binary search",
+            "category": "bugfix",
+            "kind": "code",
+            "difficulty": "easy",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 2.5738,
+              "ttft_s": 0.4723,
+              "eval_count": 94,
+              "prompt_eval_count": 254,
+              "eval_duration_s": 2.1014,
+              "prompt_eval_duration_s": 0.2234,
+              "load_duration_s": 0.0006,
+              "total_duration_s": 2.5734,
+              "done_reason": "stop",
+              "tokens_per_s": 44.732
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17893.93,
+              "peak_used_vram_mb": 17893.93,
+              "peak_delta_vram_mb": 0.0,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 40.0,
+              "max_temp_c": 100.0,
+              "max_power_w": 224.0,
+              "avg_power_w": 96.4,
+              "samples": 5
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 11,
+              "total": 11,
+              "basic_passed": 5,
+              "basic_total": 5,
+              "edge_passed": 6,
+              "edge_total": 6,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "273 chars"
+                },
+                {
+                  "name": "syntax",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "required_symbols",
+                  "ok": true,
+                  "detail": "all required symbols present"
+                },
+                {
+                  "name": "no_placeholders",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "11 tests"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "test_basic_found_middle",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0394,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_found_first",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0399,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_found_last",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0388,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_absent",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0393,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_empty",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.045,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_single_present",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0398,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_single_absent",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0452,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_duplicates",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0402,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_negative_values",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0399,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_no_mutation",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0387,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_large_list",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0389,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "extracted_chars": 273
+            },
+            "error": null,
+            "duration_s": 3.345,
+            "output_chars": 287,
+            "thinking_chars": 0,
+            "requested_max_predict": 768
+          },
+          {
+            "task_id": "bugfix_inventory",
+            "title": "Fix inventory validation",
+            "category": "bugfix",
+            "kind": "code",
+            "difficulty": "medium",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 6.2519,
+              "ttft_s": 1.5554,
+              "eval_count": 195,
+              "prompt_eval_count": 249,
+              "eval_duration_s": 4.6964,
+              "prompt_eval_duration_s": 1.3588,
+              "load_duration_s": 0.0006,
+              "total_duration_s": 6.2515,
+              "done_reason": "stop",
+              "tokens_per_s": 41.521
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17893.93,
+              "peak_used_vram_mb": 17893.93,
+              "peak_delta_vram_mb": 0.0,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 76.78,
+              "max_temp_c": 101.0,
+              "max_power_w": 236.0,
+              "avg_power_w": 147.89,
+              "samples": 9
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 10,
+              "total": 10,
+              "basic_passed": 5,
+              "basic_total": 5,
+              "edge_passed": 5,
+              "edge_total": 5,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "712 chars"
+                },
+                {
+                  "name": "syntax",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "required_symbols",
+                  "ok": true,
+                  "detail": "all required symbols present"
+                },
+                {
+                  "name": "no_placeholders",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "10 tests"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "test_basic_add_and_count",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0398,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_add_existing",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0403,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_remove",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0391,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_remove_exact",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0401,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_unknown_count",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0395,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_unknown_remove",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0452,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_insufficient_remove",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0403,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_non_positive_quantities",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0421,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_multiple_items",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0402,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_never_negative",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0401,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "extracted_chars": 712
+            },
+            "error": null,
+            "duration_s": 6.904,
+            "output_chars": 726,
+            "thinking_chars": 0,
+            "requested_max_predict": 768
+          },
+          {
+            "task_id": "completion_parse_duration",
+            "title": "Complete a duration parser",
+            "category": "completion",
+            "kind": "code",
+            "difficulty": "medium",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 10.9434,
+              "ttft_s": 1.49,
+              "eval_count": 351,
+              "prompt_eval_count": 214,
+              "eval_duration_s": 9.4533,
+              "prompt_eval_duration_s": 1.2926,
+              "load_duration_s": 0.0006,
+              "total_duration_s": 10.9429,
+              "done_reason": "stop",
+              "tokens_per_s": 37.13
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17893.93,
+              "peak_used_vram_mb": 17893.93,
+              "peak_delta_vram_mb": 0.0,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 85.29,
+              "max_temp_c": 103.0,
+              "max_power_w": 243.0,
+              "avg_power_w": 159.57,
+              "samples": 14
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 10,
+              "total": 10,
+              "basic_passed": 5,
+              "basic_total": 5,
+              "edge_passed": 5,
+              "edge_total": 5,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "1105 chars"
+                },
+                {
+                  "name": "syntax",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "required_symbols",
+                  "ok": true,
+                  "detail": "all required symbols present"
+                },
+                {
+                  "name": "no_placeholders",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "10 tests"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "test_basic_seconds",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0402,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_minutes",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0394,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_hours",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0406,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_hours_minutes",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0413,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_all_units",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0387,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_zero",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.039,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_minutes_seconds",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0394,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_invalid_values",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0397,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_large_values",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0406,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_single_zero_minutes",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0389,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "extracted_chars": 1105
+            },
+            "error": null,
+            "duration_s": 11.591,
+            "output_chars": 1139,
+            "thinking_chars": 0,
+            "requested_max_predict": 768
+          },
+          {
+            "task_id": "refactor_summarize",
+            "title": "Refactor a multi-pass summary function",
+            "category": "refactor",
+            "kind": "code",
+            "difficulty": "medium",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 6.6289,
+              "ttft_s": 2.1414,
+              "eval_count": 164,
+              "prompt_eval_count": 337,
+              "eval_duration_s": 4.4874,
+              "prompt_eval_duration_s": 1.9402,
+              "load_duration_s": 0.0006,
+              "total_duration_s": 6.6284,
+              "done_reason": "stop",
+              "tokens_per_s": 36.547
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17893.93,
+              "peak_used_vram_mb": 17899.88,
+              "peak_delta_vram_mb": 5.95,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 75.33,
+              "max_temp_c": 104.0,
+              "max_power_w": 206.0,
+              "avg_power_w": 141.11,
+              "samples": 9
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 9,
+              "total": 9,
+              "basic_passed": 4,
+              "basic_total": 4,
+              "edge_passed": 5,
+              "edge_total": 5,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "545 chars"
+                },
+                {
+                  "name": "syntax",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "required_symbols",
+                  "ok": true,
+                  "detail": "all required symbols present"
+                },
+                {
+                  "name": "no_placeholders",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "9 tests"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "test_basic_list",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0405,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_empty",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0414,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_tuple",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.041,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_negative",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0391,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_single_value",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0378,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_floats",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0383,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_generator",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0386,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_no_mutation",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0385,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_large_input",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0392,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "extracted_chars": 545
+            },
+            "error": null,
+            "duration_s": 7.222,
+            "output_chars": 559,
+            "thinking_chars": 0,
+            "requested_max_predict": 768
+          },
+          {
+            "task_id": "program_json_flatten",
+            "title": "Standalone JSON flattener",
+            "category": "program",
+            "kind": "program",
+            "difficulty": "medium",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 10.7191,
+              "ttft_s": 1.6445,
+              "eval_count": 294,
+              "prompt_eval_count": 239,
+              "eval_duration_s": 9.0745,
+              "prompt_eval_duration_s": 1.4518,
+              "load_duration_s": 0.0006,
+              "total_duration_s": 10.7186,
+              "done_reason": "stop",
+              "tokens_per_s": 32.398
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17899.88,
+              "peak_used_vram_mb": 17899.88,
+              "peak_delta_vram_mb": 0.0,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 83.36,
+              "max_temp_c": 104.0,
+              "max_power_w": 239.0,
+              "avg_power_w": 133.43,
+              "samples": 14
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 10,
+              "total": 10,
+              "basic_passed": 3,
+              "basic_total": 3,
+              "edge_passed": 7,
+              "edge_total": 7,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "1138 chars"
+                },
+                {
+                  "name": "syntax",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "no_placeholders",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "10 cases"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "basic_nested_object",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.027,
+                  "error": null
+                },
+                {
+                  "name": "basic_array",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0263,
+                  "error": null
+                },
+                {
+                  "name": "basic_mixed",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0265,
+                  "error": null
+                },
+                {
+                  "name": "edge_empty_object",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0263,
+                  "error": null
+                },
+                {
+                  "name": "edge_empty_array",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0251,
+                  "error": null
+                },
+                {
+                  "name": "edge_root_array",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0285,
+                  "error": null
+                },
+                {
+                  "name": "edge_lexicographic_sort",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0278,
+                  "error": null
+                },
+                {
+                  "name": "edge_nested_arrays",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0297,
+                  "error": null
+                },
+                {
+                  "name": "edge_unicode_string",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0246,
+                  "error": null
+                },
+                {
+                  "name": "edge_numbers",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0254,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "extracted_chars": 1138
+            },
+            "error": null,
+            "duration_s": 11.227,
+            "output_chars": 1152,
+            "thinking_chars": 0,
+            "requested_max_predict": 900
+          },
+          {
+            "task_id": "program_word_freq",
+            "title": "Standalone word frequency report",
+            "category": "program",
+            "kind": "program",
+            "difficulty": "medium",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 7.1368,
+              "ttft_s": 1.3655,
+              "eval_count": 176,
+              "prompt_eval_count": 189,
+              "eval_duration_s": 5.7713,
+              "prompt_eval_duration_s": 1.1663,
+              "load_duration_s": 0.0006,
+              "total_duration_s": 7.1364,
+              "done_reason": "stop",
+              "tokens_per_s": 30.496
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17899.88,
+              "peak_used_vram_mb": 17899.88,
+              "peak_delta_vram_mb": 0.0,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 76.9,
+              "max_temp_c": 104.0,
+              "max_power_w": 203.0,
+              "avg_power_w": 115.8,
+              "samples": 10
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 10,
+              "total": 10,
+              "basic_passed": 3,
+              "basic_total": 3,
+              "edge_passed": 7,
+              "edge_total": 7,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "604 chars"
+                },
+                {
+                  "name": "syntax",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "no_placeholders",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "10 cases"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "basic_simple",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0235,
+                  "error": null
+                },
+                {
+                  "name": "basic_two_words",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0231,
+                  "error": null
+                },
+                {
+                  "name": "basic_punctuation",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0237,
+                  "error": null
+                },
+                {
+                  "name": "edge_empty",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0232,
+                  "error": null
+                },
+                {
+                  "name": "edge_only_punctuation",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0243,
+                  "error": null
+                },
+                {
+                  "name": "edge_casefold",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0236,
+                  "error": null
+                },
+                {
+                  "name": "edge_tie_break",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0231,
+                  "error": null
+                },
+                {
+                  "name": "edge_numbers",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0219,
+                  "error": null
+                },
+                {
+                  "name": "edge_apostrophe",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0241,
+                  "error": null
+                },
+                {
+                  "name": "edge_ascii_only",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0233,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "extracted_chars": 604
+            },
+            "error": null,
+            "duration_s": 7.618,
+            "output_chars": 618,
+            "thinking_chars": 0,
+            "requested_max_predict": 800
+          },
+          {
+            "task_id": "sql_top_customers",
+            "title": "Top customers including ties",
+            "category": "sql",
+            "kind": "sql",
+            "difficulty": "medium",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 5.2116,
+              "ttft_s": 1.364,
+              "eval_count": 127,
+              "prompt_eval_count": 188,
+              "eval_duration_s": 3.8474,
+              "prompt_eval_duration_s": 1.1734,
+              "load_duration_s": 0.0006,
+              "total_duration_s": 5.2112,
+              "done_reason": "stop",
+              "tokens_per_s": 33.009
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17899.88,
+              "peak_used_vram_mb": 17899.88,
+              "peak_delta_vram_mb": 0.0,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 59.38,
+              "max_temp_c": 99.0,
+              "max_power_w": 188.0,
+              "avg_power_w": 95.5,
+              "samples": 8
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 5,
+              "total": 5,
+              "basic_passed": 2,
+              "basic_total": 2,
+              "edge_passed": 3,
+              "edge_total": 3,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "463 chars"
+                },
+                {
+                  "name": "read_only",
+                  "ok": true,
+                  "detail": "read-only SELECT"
+                },
+                {
+                  "name": "single_statement",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "5 cases"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "basic_top_two",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0428,
+                  "error": null
+                },
+                {
+                  "name": "basic_single_customer",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0391,
+                  "error": null
+                },
+                {
+                  "name": "edge_tie_for_second",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0396,
+                  "error": null
+                },
+                {
+                  "name": "edge_tie_for_first",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0415,
+                  "error": null
+                },
+                {
+                  "name": "edge_customers_without_orders",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0434,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "extracted_chars": 463
+            },
+            "error": null,
+            "duration_s": 5.706,
+            "output_chars": 474,
+            "thinking_chars": 0,
+            "requested_max_predict": 768
+          },
+          {
+            "task_id": "sql_department_above_average",
+            "title": "Above-average salaries per department",
+            "category": "sql",
+            "kind": "sql",
+            "difficulty": "hard",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 3.8008,
+              "ttft_s": 1.326,
+              "eval_count": 82,
+              "prompt_eval_count": 153,
+              "eval_duration_s": 2.4746,
+              "prompt_eval_duration_s": 1.139,
+              "load_duration_s": 0.0006,
+              "total_duration_s": 3.8003,
+              "done_reason": "stop",
+              "tokens_per_s": 33.137
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17899.88,
+              "peak_used_vram_mb": 17899.88,
+              "peak_delta_vram_mb": 0.0,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 66.5,
+              "max_temp_c": 100.0,
+              "max_power_w": 204.0,
+              "avg_power_w": 109.5,
+              "samples": 6
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 5,
+              "total": 5,
+              "basic_passed": 1,
+              "basic_total": 1,
+              "edge_passed": 4,
+              "edge_total": 4,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "298 chars"
+                },
+                {
+                  "name": "read_only",
+                  "ok": true,
+                  "detail": "read-only SELECT"
+                },
+                {
+                  "name": "single_statement",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "5 cases"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "basic_above_department_average",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0425,
+                  "error": null
+                },
+                {
+                  "name": "edge_all_equal",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0428,
+                  "error": null
+                },
+                {
+                  "name": "edge_single_employee_departments",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0399,
+                  "error": null
+                },
+                {
+                  "name": "edge_order_and_ties",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0391,
+                  "error": null
+                },
+                {
+                  "name": "edge_department_vs_overall_average",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0409,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "extracted_chars": 298
+            },
+            "error": null,
+            "duration_s": 4.265,
+            "output_chars": 309,
+            "thinking_chars": 0,
+            "requested_max_predict": 768
+          },
+          {
+            "task_id": "regex_semver",
+            "title": "Semantic version matcher",
+            "category": "regex",
+            "kind": "regex",
+            "difficulty": "medium",
+            "score": 0.8343,
+            "resolved": false,
+            "metrics": {
+              "wall_s": 4.8904,
+              "ttft_s": 1.9896,
+              "eval_count": 79,
+              "prompt_eval_count": 290,
+              "eval_duration_s": 2.9008,
+              "prompt_eval_duration_s": 1.7891,
+              "load_duration_s": 0.0008,
+              "total_duration_s": 4.8898,
+              "done_reason": "stop",
+              "tokens_per_s": 27.234
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17899.88,
+              "peak_used_vram_mb": 17899.88,
+              "peak_delta_vram_mb": 0.0,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 71.43,
+              "max_temp_c": 99.0,
+              "max_power_w": 143.0,
+              "avg_power_w": 97.29,
+              "samples": 7
+            },
+            "validation": {
+              "score": 0.8343,
+              "resolved": false,
+              "correctness": 0.8571,
+              "depth": 0.8,
+              "passed": 12,
+              "total": 14,
+              "basic_passed": 4,
+              "basic_total": 4,
+              "edge_passed": 8,
+              "edge_total": 10,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "111 chars"
+                },
+                {
+                  "name": "regex_compiles",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "14 cases"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "basic_core",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "basic_prerelease",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "basic_build",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "basic_zero",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "edge_multi_digit",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "edge_word_prefix",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "edge_prerelease_dots",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "edge_both_suffixes",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "edge_embedded_four_parts",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "edge_leading_zero_major",
+                  "quality": "edge",
+                  "ok": false,
+                  "duration_s": 0.0,
+                  "error": "unexpected match '01.2.3' in '01.2.3'"
+                },
+                {
+                  "name": "edge_leading_zero_patch",
+                  "quality": "edge",
+                  "ok": false,
+                  "duration_s": 0.0,
+                  "error": "unexpected match '1.2.03' in '1.2.03'"
+                },
+                {
+                  "name": "edge_short_version",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "edge_trailing_hyphen",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "edge_no_version",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                }
+              ],
+              "errors": [
+                "edge_leading_zero_major: unexpected match '01.2.3' in '01.2.3'",
+                "edge_leading_zero_patch: unexpected match '1.2.03' in '1.2.03'"
+              ],
+              "extracted_chars": 111
+            },
+            "error": null,
+            "duration_s": 5.137,
+            "output_chars": 128,
+            "thinking_chars": 0,
+            "requested_max_predict": 768
+          },
+          {
+            "task_id": "regex_password",
+            "title": "Password policy regex",
+            "category": "regex",
+            "kind": "regex",
+            "difficulty": "medium",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 4.5038,
+              "ttft_s": 1.3205,
+              "eval_count": 89,
+              "prompt_eval_count": 159,
+              "eval_duration_s": 3.1833,
+              "prompt_eval_duration_s": 1.1367,
+              "load_duration_s": 0.0006,
+              "total_duration_s": 4.5032,
+              "done_reason": "stop",
+              "tokens_per_s": 27.958
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17899.88,
+              "peak_used_vram_mb": 17899.88,
+              "peak_delta_vram_mb": 0.0,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 64.29,
+              "max_temp_c": 103.0,
+              "max_power_w": 228.0,
+              "avg_power_w": 121.86,
+              "samples": 7
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 14,
+              "total": 14,
+              "basic_passed": 6,
+              "basic_total": 6,
+              "edge_passed": 8,
+              "edge_total": 8,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "116 chars"
+                },
+                {
+                  "name": "regex_compiles",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "14 cases"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "basic_valid",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "basic_valid_other_specials",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "basic_no_special",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "basic_no_uppercase",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "basic_no_lowercase",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "basic_no_digit",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "edge_min_length",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "edge_exact_min_length",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "edge_max_length",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "edge_over_max_length",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "edge_forbidden_period",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "edge_whitespace",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "edge_unicode",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                },
+                {
+                  "name": "edge_dollar_special",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "extracted_chars": 116
+            },
+            "error": null,
+            "duration_s": 4.745,
+            "output_chars": 133,
+            "thinking_chars": 0,
+            "requested_max_predict": 768
+          },
+          {
+            "task_id": "tests_gen_bank_account",
+            "title": "Write a high-quality test suite",
+            "category": "test-generation",
+            "kind": "tests",
+            "difficulty": "hard",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 22.6088,
+              "ttft_s": 2.0079,
+              "eval_count": 686,
+              "prompt_eval_count": 291,
+              "eval_duration_s": 20.5974,
+              "prompt_eval_duration_s": 1.8129,
+              "load_duration_s": 0.0006,
+              "total_duration_s": 22.6081,
+              "done_reason": "stop",
+              "tokens_per_s": 33.305
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17899.88,
+              "peak_used_vram_mb": 17899.88,
+              "peak_delta_vram_mb": 0.0,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 86.93,
+              "max_temp_c": 105.0,
+              "max_power_w": 248.0,
+              "avg_power_w": 144.19,
+              "samples": 27
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 14,
+              "total": 14,
+              "basic_passed": 14,
+              "basic_total": 14,
+              "edge_passed": 0,
+              "edge_total": 0,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "2566 chars"
+                },
+                {
+                  "name": "syntax",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "min_tests",
+                  "ok": true,
+                  "detail": "14 test functions (minimum 6)"
+                },
+                {
+                  "name": "reference_valid",
+                  "ok": true,
+                  "detail": "100% of tests pass on reference"
+                },
+                {
+                  "name": "mutants_killed",
+                  "ok": true,
+                  "detail": "100% of mutants killed"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "test_initial_balance_default",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0429,
+                  "error": null
+                },
+                {
+                  "name": "test_initial_balance_positive",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0417,
+                  "error": null
+                },
+                {
+                  "name": "test_initial_balance_negative_raises",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0396,
+                  "error": null
+                },
+                {
+                  "name": "test_deposit_positive",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0394,
+                  "error": null
+                },
+                {
+                  "name": "test_deposit_zero_raises",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0389,
+                  "error": null
+                },
+                {
+                  "name": "test_deposit_negative_raises",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.039,
+                  "error": null
+                },
+                {
+                  "name": "test_deposit_non_integer_raises",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0399,
+                  "error": null
+                },
+                {
+                  "name": "test_withdraw_positive",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0397,
+                  "error": null
+                },
+                {
+                  "name": "test_withdraw_zero_raises",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.04,
+                  "error": null
+                },
+                {
+                  "name": "test_withdraw_negative_raises",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.041,
+                  "error": null
+                },
+                {
+                  "name": "test_withdraw_non_integer_raises",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0393,
+                  "error": null
+                },
+                {
+                  "name": "test_withdraw_exceeds_balance_raises",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0411,
+                  "error": null
+                },
+                {
+                  "name": "test_withdraw_exact_balance",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0393,
+                  "error": null
+                },
+                {
+                  "name": "test_multiple_operations",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0383,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "validity": 1.0,
+              "kill_rate": 1.0,
+              "mutant_results": [
+                {
+                  "index": 0,
+                  "killed": true,
+                  "failed_tests": [
+                    "test_initial_balance_negative_raises"
+                  ]
+                },
+                {
+                  "index": 1,
+                  "killed": true,
+                  "failed_tests": [
+                    "test_deposit_zero_raises"
+                  ]
+                },
+                {
+                  "index": 2,
+                  "killed": true,
+                  "failed_tests": [
+                    "test_withdraw_exceeds_balance_raises"
+                  ]
+                },
+                {
+                  "index": 3,
+                  "killed": true,
+                  "failed_tests": [
+                    "test_withdraw_negative_raises"
+                  ]
+                }
+              ],
+              "extracted_chars": 2566,
+              "test_count": 14,
+              "test_names": [
+                "test_initial_balance_default",
+                "test_initial_balance_positive",
+                "test_initial_balance_negative_raises",
+                "test_deposit_positive",
+                "test_deposit_zero_raises",
+                "test_deposit_negative_raises",
+                "test_deposit_non_integer_raises",
+                "test_withdraw_positive",
+                "test_withdraw_zero_raises",
+                "test_withdraw_negative_raises",
+                "test_withdraw_non_integer_raises",
+                "test_withdraw_exceeds_balance_raises",
+                "test_withdraw_exact_balance",
+                "test_multiple_operations"
+              ]
+            },
+            "error": null,
+            "duration_s": 25.655,
+            "output_chars": 2580,
+            "thinking_chars": 0,
+            "requested_max_predict": 1000
+          }
+        ]
+      }
+    }
+  ]
+}

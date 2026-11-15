@@ -1,0 +1,725 @@
+{
+  "meta": {
+    "run_id": "20261115-142755",
+    "started_at": "2026-11-15T13:27:55.076708+00:00",
+    "ollama_version": "0.40.14",
+    "config": {
+      "models": [
+        "qwen3.8:latest"
+      ],
+      "tasks": [
+        "codegen_slugify",
+        "bugfix_binary_search"
+      ],
+      "categories": [
+        "bugfix",
+        "codegen"
+      ],
+      "think": false,
+      "num_ctx": 8192,
+      "num_predict_cap": 400,
+      "temperature": 0.0,
+      "seed": 42,
+      "keep_alive": "45m",
+      "request_timeout_s": 900.0,
+      "gpu_device": 0,
+      "gpu_sampling": true,
+      "sandbox_backend": "bwrap",
+      "unload_between_models": true
+    },
+    "verification": null,
+    "finished_at": "2026-11-15T13:28:52.117826+00:00",
+    "duration_s": 57.04
+  },
+  "models": [
+    {
+      "model": "qwen3.8:latest",
+      "tasks": [
+        {
+          "task_id": "codegen_slugify",
+          "title": "URL slug generation",
+          "category": "codegen",
+          "kind": "code",
+          "difficulty": "easy",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 38.7227,
+            "ttft_s": 34.7924,
+            "eval_count": 149,
+            "prompt_eval_count": 209,
+            "eval_duration_s": 3.9285,
+            "prompt_eval_duration_s": 1.5522,
+            "load_duration_s": 33.2313,
+            "total_duration_s": 38.7222,
+            "done_reason": "stop",
+            "tokens_per_s": 37.928
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17688.27,
+            "peak_used_vram_mb": 17892.24,
+            "peak_delta_vram_mb": 203.97,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 17.91,
+            "max_temp_c": 73.0,
+            "max_power_w": 266.0,
+            "avg_power_w": 41.0,
+            "samples": 45
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 11,
+            "total": 11,
+            "basic_passed": 4,
+            "basic_total": 4,
+            "edge_passed": 7,
+            "edge_total": 7,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "550 chars"
+              },
+              {
+                "name": "syntax",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "required_symbols",
+                "ok": true,
+                "detail": "all required symbols present"
+              },
+              {
+                "name": "no_placeholders",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "11 tests"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "test_basic_spaces",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0437,
+                "error": null
+              },
+              {
+                "name": "test_basic_punctuation",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0388,
+                "error": null
+              },
+              {
+                "name": "test_basic_case",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0389,
+                "error": null
+              },
+              {
+                "name": "test_basic_digits",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0455,
+                "error": null
+              },
+              {
+                "name": "test_edge_accents",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0425,
+                "error": null
+              },
+              {
+                "name": "test_edge_symbols_only",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.04,
+                "error": null
+              },
+              {
+                "name": "test_edge_empty",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0412,
+                "error": null
+              },
+              {
+                "name": "test_edge_underscores_dots",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0391,
+                "error": null
+              },
+              {
+                "name": "test_edge_non_ascii",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0387,
+                "error": null
+              },
+              {
+                "name": "test_edge_multiple_separators",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0387,
+                "error": null
+              },
+              {
+                "name": "test_edge_leading_trailing",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0419,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "extracted_chars": 550
+          },
+          "error": null,
+          "duration_s": 39.477,
+          "output_chars": 564,
+          "thinking_chars": 0,
+          "requested_max_predict": 400
+        },
+        {
+          "task_id": "bugfix_binary_search",
+          "title": "Fix an infinite-loop binary search",
+          "category": "bugfix",
+          "kind": "code",
+          "difficulty": "easy",
+          "score": 1.0,
+          "resolved": true,
+          "metrics": {
+            "wall_s": 3.6409,
+            "ttft_s": 1.5806,
+            "eval_count": 94,
+            "prompt_eval_count": 254,
+            "eval_duration_s": 2.0603,
+            "prompt_eval_duration_s": 1.3817,
+            "load_duration_s": 0.0048,
+            "total_duration_s": 3.6356,
+            "done_reason": "stop",
+            "tokens_per_s": 45.624
+          },
+          "gpu": {
+            "device": 0,
+            "enabled": true,
+            "reason": null,
+            "total_vram_mb": 32752.0,
+            "baseline_used_vram_mb": 17892.24,
+            "peak_used_vram_mb": 17893.93,
+            "peak_delta_vram_mb": 1.69,
+            "max_gpu_use_pct": 100.0,
+            "avg_gpu_use_pct": 66.5,
+            "max_temp_c": 77.0,
+            "max_power_w": 234.0,
+            "avg_power_w": 152.17,
+            "samples": 6
+          },
+          "validation": {
+            "score": 1.0,
+            "resolved": true,
+            "correctness": 1.0,
+            "depth": 1.0,
+            "passed": 11,
+            "total": 11,
+            "basic_passed": 5,
+            "basic_total": 5,
+            "edge_passed": 6,
+            "edge_total": 6,
+            "checks": [
+              {
+                "name": "extraction",
+                "ok": true,
+                "detail": "273 chars"
+              },
+              {
+                "name": "syntax",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "required_symbols",
+                "ok": true,
+                "detail": "all required symbols present"
+              },
+              {
+                "name": "no_placeholders",
+                "ok": true,
+                "detail": ""
+              },
+              {
+                "name": "tests_present",
+                "ok": true,
+                "detail": "11 tests"
+              }
+            ],
+            "outcomes": [
+              {
+                "name": "test_basic_found_middle",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0405,
+                "error": null
+              },
+              {
+                "name": "test_basic_found_first",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0384,
+                "error": null
+              },
+              {
+                "name": "test_basic_found_last",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0386,
+                "error": null
+              },
+              {
+                "name": "test_basic_absent",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0414,
+                "error": null
+              },
+              {
+                "name": "test_basic_empty",
+                "quality": "basic",
+                "ok": true,
+                "duration_s": 0.0406,
+                "error": null
+              },
+              {
+                "name": "test_edge_single_present",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0408,
+                "error": null
+              },
+              {
+                "name": "test_edge_single_absent",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0385,
+                "error": null
+              },
+              {
+                "name": "test_edge_duplicates",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0415,
+                "error": null
+              },
+              {
+                "name": "test_edge_negative_values",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0437,
+                "error": null
+              },
+              {
+                "name": "test_edge_no_mutation",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.04,
+                "error": null
+              },
+              {
+                "name": "test_edge_large_list",
+                "quality": "edge",
+                "ok": true,
+                "duration_s": 0.0392,
+                "error": null
+              }
+            ],
+            "errors": [],
+            "extracted_chars": 273
+          },
+          "error": null,
+          "duration_s": 4.338,
+          "output_chars": 287,
+          "thinking_chars": 0,
+          "requested_max_predict": 400
+        }
+      ],
+      "error": null,
+      "load_s": 12.49,
+      "warmup_wall_s": 13.183,
+      "summary": {
+        "model": "qwen3.8:latest",
+        "error": null,
+        "task_count": 2,
+        "resolved_count": 2,
+        "resolved_rate": 1.0,
+        "overall_score": 1.0,
+        "coding_score": 1.0,
+        "non_coding_score": 0.0,
+        "test_generation_score": 0.0,
+        "correctness": 1.0,
+        "depth": 1.0,
+        "category_scores": {
+          "bugfix": 1.0,
+          "codegen": 1.0
+        },
+        "difficulty_scores": {
+          "easy": 1.0
+        },
+        "performance": {
+          "load_s": 12.49,
+          "warmup_wall_s": 13.183,
+          "tokens_per_s_mean": 41.776,
+          "tokens_per_s_median": 41.776,
+          "ttft_s_mean": 18.186,
+          "eval_tokens_total": 243,
+          "prompt_tokens_total": 463,
+          "generation_wall_s_total": 42.36,
+          "peak_vram_mb": 17893.9,
+          "mean_delta_vram_mb": 102.8,
+          "avg_gpu_use_pct": 42.2,
+          "max_temp_c": 77.0,
+          "max_power_w": 266.0
+        },
+        "tasks": [
+          {
+            "task_id": "codegen_slugify",
+            "title": "URL slug generation",
+            "category": "codegen",
+            "kind": "code",
+            "difficulty": "easy",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 38.7227,
+              "ttft_s": 34.7924,
+              "eval_count": 149,
+              "prompt_eval_count": 209,
+              "eval_duration_s": 3.9285,
+              "prompt_eval_duration_s": 1.5522,
+              "load_duration_s": 33.2313,
+              "total_duration_s": 38.7222,
+              "done_reason": "stop",
+              "tokens_per_s": 37.928
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17688.27,
+              "peak_used_vram_mb": 17892.24,
+              "peak_delta_vram_mb": 203.97,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 17.91,
+              "max_temp_c": 73.0,
+              "max_power_w": 266.0,
+              "avg_power_w": 41.0,
+              "samples": 45
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 11,
+              "total": 11,
+              "basic_passed": 4,
+              "basic_total": 4,
+              "edge_passed": 7,
+              "edge_total": 7,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "550 chars"
+                },
+                {
+                  "name": "syntax",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "required_symbols",
+                  "ok": true,
+                  "detail": "all required symbols present"
+                },
+                {
+                  "name": "no_placeholders",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "11 tests"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "test_basic_spaces",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0437,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_punctuation",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0388,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_case",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0389,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_digits",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0455,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_accents",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0425,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_symbols_only",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.04,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_empty",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0412,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_underscores_dots",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0391,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_non_ascii",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0387,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_multiple_separators",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0387,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_leading_trailing",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0419,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "extracted_chars": 550
+            },
+            "error": null,
+            "duration_s": 39.477,
+            "output_chars": 564,
+            "thinking_chars": 0,
+            "requested_max_predict": 400
+          },
+          {
+            "task_id": "bugfix_binary_search",
+            "title": "Fix an infinite-loop binary search",
+            "category": "bugfix",
+            "kind": "code",
+            "difficulty": "easy",
+            "score": 1.0,
+            "resolved": true,
+            "metrics": {
+              "wall_s": 3.6409,
+              "ttft_s": 1.5806,
+              "eval_count": 94,
+              "prompt_eval_count": 254,
+              "eval_duration_s": 2.0603,
+              "prompt_eval_duration_s": 1.3817,
+              "load_duration_s": 0.0048,
+              "total_duration_s": 3.6356,
+              "done_reason": "stop",
+              "tokens_per_s": 45.624
+            },
+            "gpu": {
+              "device": 0,
+              "enabled": true,
+              "reason": null,
+              "total_vram_mb": 32752.0,
+              "baseline_used_vram_mb": 17892.24,
+              "peak_used_vram_mb": 17893.93,
+              "peak_delta_vram_mb": 1.69,
+              "max_gpu_use_pct": 100.0,
+              "avg_gpu_use_pct": 66.5,
+              "max_temp_c": 77.0,
+              "max_power_w": 234.0,
+              "avg_power_w": 152.17,
+              "samples": 6
+            },
+            "validation": {
+              "score": 1.0,
+              "resolved": true,
+              "correctness": 1.0,
+              "depth": 1.0,
+              "passed": 11,
+              "total": 11,
+              "basic_passed": 5,
+              "basic_total": 5,
+              "edge_passed": 6,
+              "edge_total": 6,
+              "checks": [
+                {
+                  "name": "extraction",
+                  "ok": true,
+                  "detail": "273 chars"
+                },
+                {
+                  "name": "syntax",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "required_symbols",
+                  "ok": true,
+                  "detail": "all required symbols present"
+                },
+                {
+                  "name": "no_placeholders",
+                  "ok": true,
+                  "detail": ""
+                },
+                {
+                  "name": "tests_present",
+                  "ok": true,
+                  "detail": "11 tests"
+                }
+              ],
+              "outcomes": [
+                {
+                  "name": "test_basic_found_middle",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0405,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_found_first",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0384,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_found_last",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0386,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_absent",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0414,
+                  "error": null
+                },
+                {
+                  "name": "test_basic_empty",
+                  "quality": "basic",
+                  "ok": true,
+                  "duration_s": 0.0406,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_single_present",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0408,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_single_absent",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0385,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_duplicates",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0415,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_negative_values",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0437,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_no_mutation",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.04,
+                  "error": null
+                },
+                {
+                  "name": "test_edge_large_list",
+                  "quality": "edge",
+                  "ok": true,
+                  "duration_s": 0.0392,
+                  "error": null
+                }
+              ],
+              "errors": [],
+              "extracted_chars": 273
+            },
+            "error": null,
+            "duration_s": 4.338,
+            "output_chars": 287,
+            "thinking_chars": 0,
+            "requested_max_predict": 400
+          }
+        ]
+      }
+    }
+  ]
+}
